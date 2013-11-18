@@ -1,7 +1,6 @@
 'use strict';
 
 var gitStrip = require('../lib/gitStrip.js');
-console.log(gitStrip);
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -43,6 +42,11 @@ exports['gitstrip'] = {
   'no args': function(test) {
     test.expect(1);
     test.equal(gitStrip(), 'Please pass a file to parse and a callback function', 'Should show an error message.');
+    test.done();
+  },
+  'invalid file' : function(test) {
+    test.expect(1);
+    test.throws(gitStrip('notafile'), 'Should return an error when doesn\'t exist');
     test.done();
   }
 };
