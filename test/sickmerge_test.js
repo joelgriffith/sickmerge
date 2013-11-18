@@ -1,6 +1,7 @@
 'use strict';
 
-// var sickmerge = require('../lib/sickmerge.js');
+var gitStrip = require('../lib/gitStrip.js');
+console.log(gitStrip);
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -34,3 +35,14 @@
 //     test.done();
 //   },
 // };
+
+exports['gitstrip'] = {
+  setUp: function(done) {
+    done();
+  },
+  'no args': function(test) {
+    test.expect(1);
+    test.equal(gitStrip(), 'Please pass a file to parse and a callback function', 'Should show an error message.');
+    test.done();
+  }
+};

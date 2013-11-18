@@ -7,6 +7,5 @@ var CodeMirror = require('code-mirror/addon/merge'),
 		origRight: $('.theirs').html(),
 		highlightDifferences: true,
 		smartIndent: true,
-		lineNumbers: true,
-		mode: require('code-mirror/mode/javascript')
+		lineNumbers: true
 	});

@@ -3,11 +3,10 @@
 A git merge resolution tool. In the browser.
 
 ## Getting Started
-Install the module with: `npm install sickmerge`
+Install the tool with: `npm install -g sickmerge`
 
-```javascript
-var sickmerge = require('sickmerge');
-sickmerge.awesome(); // "awesome"
+```shell
+sickmerge {conflicted-file}
 ```
 
 ## Documentation
