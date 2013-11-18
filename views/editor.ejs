@@ -4,18 +4,19 @@
 		<meta charset="UTF-8">
 		<title>Sick Merge</title>
 		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="/build/css/main.css">
 	</head>
 	<body>
 		<div class="hidden">
-			<div class="yours">
+			<p class="yours">
 				<%- body[0] %>
-			</div>
-			<div class="both">
+			</p>
+			<p class="both">
 				<%- body[1] %>				
-			</div>
-			<div class="theirs">
+			</p>
+			<p class="theirs">
 				<%- body[2] %>				
-			</div>
+			</p>
 		</div>
 		
 		<div id="split-left"></div>
@@ -26,6 +27,6 @@
 			<button button type="button" class="btn btn-primary" data-id="save-file">Save File</button>
 			<button button type="button" class="btn btn-default" data-id="cancel">Cancel</button>
 		</div>
-		<script src="http://localhost:2001/build/js/main.js"></script>
+		<script src="/build/js/main.js"></script>
 	</body>
 </html>
