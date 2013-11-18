@@ -1,0 +1,12 @@
+<<<<<<< HEAD:mergetest
+I should be here for local stuff(1/2).
+=======
+I should be here for merge stuff(1/2).
+>>>>>>> 4e2b407f501b68f8588aa645acafffa0224b9b78:mergetest
+I should be here no matter what.
+And so should I.
+<<<<<<< HEAD
+I should be here for local stuff(2/2).
+=======
+I should be here for merge stuff(2/2).
+>>>>>>> 4e2b407f501b68f8588aa645acafffa0224b9b78:mergetest

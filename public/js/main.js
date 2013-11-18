@@ -1,0 +1,1 @@
+var CodeMirror = require('code-mirror/mode/htmlmixed');

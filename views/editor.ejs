@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Sick Merge</title>
+		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<div class="hidden">
+			<div class="yours">
+				<%- body[0] %>
+			</div>
+			<div class="both">
+				<%- body[1] %>				
+			</div>
+			<div class="theirs">
+				<%- body[2] %>				
+			</div>
+		</div>
+		
+		<div id="split-left"></div>
+		<div id="split-middle"></div>
+		<div id="split-right"></div>
+		
+		<div class="toolbar">
+			<button button type="button" class="btn btn-primary" data-id="save-file">Save File</button>
+			<button button type="button" class="btn btn-default" data-id="cancel">Cancel</button>
+		</div>
+		<script src="http://localhost:2001/build/js/main.js"></script>
+	</body>
+</html>
