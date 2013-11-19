@@ -1,11 +1,30 @@
 /* BASICS */
+html {
+  font-family: 'Droid Sans Mono', sans-serif;
+  background: #1d1e1c;
+  font-size: 11px;
+  line-height: 13px;
+}
 .hidden {
     display: none;
 }
+#git-diff {
+  position: absolute;
+  top: 0;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+}
+.toolbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: monospace;
-  height: 300px;
+  font-family: 'Droid Sans Mono', sans-serif;
+  height: 100%;
 }
 .CodeMirror-scroll {
   /* Set scrolling behaviour here */
@@ -18,7 +37,7 @@
 }
 
 .CodeMirror-merge, .CodeMirror-merge .CodeMirror {
-  height: 350px;
+  height: 100%;
 }
 
 .CodeMirror-merge-2pane .CodeMirror-merge-pane { width: 47%; }
@@ -59,14 +78,12 @@
   left: -50%;
   cursor: pointer;
   color: #555;
-  line-height: 1;
 }
 
 .CodeMirror-merge-copybuttons-left, .CodeMirror-merge-copybuttons-right {
   position: absolute;
   left: 0; top: 0;
   right: 0; bottom: 0;
-  line-height: 1;
 }
 
 .CodeMirror-merge-copy {
@@ -251,11 +268,9 @@ color:#aec;
    the editor. You probably shouldn't touch them. */
 
 .CodeMirror {
-  line-height: 1;
   position: relative;
   overflow: hidden;
-  background: white;
-  color: black;
+  color: #f2f2f2;
 }
 
 .CodeMirror-scroll {
@@ -334,7 +349,6 @@ color:#aec;
   margin: 0;
   white-space: pre;
   word-wrap: normal;
-  line-height: inherit;
   color: inherit;
   z-index: 2;
   position: relative;
@@ -346,6 +360,7 @@ color:#aec;
   word-break: normal;
 }
 .CodeMirror-code pre {
+  color: #f3f3f3;
   border-right: 30px solid transparent;
   width: -webkit-fit-content;
   width: -moz-fit-content;

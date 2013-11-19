@@ -2,7 +2,7 @@ var CodeMirrorMerge = require('code-mirror/addon/merge'),
 	CodeMirror = require('code-mirror/mode/javascript'),
 	$ = require('jquery-browserify');
 
-var leftPanel = new CodeMirrorMerge.MergeView(document.getElementById('split-left'), {
+var leftPanel = new CodeMirrorMerge.MergeView(document.getElementById('git-diff'), {
 	value: $('.both').html(),
 	origLeft: $('.yours').html(),
 	origRight: $('.theirs').html(),
