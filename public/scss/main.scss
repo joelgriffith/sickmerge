@@ -165,7 +165,7 @@
 .cm-s-default .cm-variable-3 {color: #085;}
 .cm-s-default .cm-property {color: black;}
 .cm-s-default .cm-operator {color: black;}
-.cm-s-default .cm-comment {color: #a50;}
+.cm-s-default .cm-comment {color: #9ac;}
 .cm-s-default .cm-string {color: #a11;}
 .cm-s-default .cm-string-2 {color: #f50;}
 .cm-s-default .cm-meta {color: #555;}
@@ -191,6 +191,59 @@
 div.CodeMirror span.CodeMirror-matchingbracket {color: #0f0;}
 div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .CodeMirror-activeline-background {background: #e8f2ff;}
+
+// JSHint Theme
+div.CodeMirror span.CodeMirror-matchingbracket,.cm-s-default span.cm-bracket2 {
+color:#0f0;
+}
+
+button:hover,.sidebar li a:hover {
+text-decoration:none;
+}
+
+.sidebar li a,.cm-s-default span.cm-bracket,.cm-s-default span.cm-bracket1,.cm-s-default span.cm-property,.cm-s-default span.cm-operator {
+color:#aaa;
+}
+
+.whiteboard button.active,.whiteboard #configure button.active:before,.cm-s-default span.cm-comment {
+color:#9ac;
+}
+
+.cm-s-default span.cm-bracket3,.cm-s-default span.cm-bracket8 {
+color:#00ff7f;
+}
+
+.cm-s-default span.cm-bracket4,.cm-s-default span.cm-bracket9 {
+color:#0ff;
+}
+
+.cm-s-default span.cm-bracket5,.cm-s-default span.cm-bracket10 {
+color:#836FFF;
+}
+
+.cm-s-default span.cm-bracket6,.cm-s-default span.cm-bracket11 {
+color:#F0F;
+}
+
+.cm-s-default span.cm-bracket7,.cm-s-default span.cm-bracket12 {
+color:#9B30FF;
+}
+
+.cm-s-default span.cm-symbol,.cm-s-default span.cm-variable,.cm-s-default span.cm-number {
+color:#ccc;
+}
+
+.cm-s-default span.cm-variable-2,.cm-s-default span.cm-def,.cm-s-default span.cm-tag {
+color:#acf;
+}
+
+.cm-s-default span.cm-string,.cm-s-default span.cm-string-2 {
+color:#add;
+}
+
+.cm-s-default span.cm-builtin,.cm-s-default span.cm-header,.cm-s-default span.cm-keyword,.cm-s-default span.cm-qualifier,.cm-s-default span.cm-attribute,.cm-s-default span.cm-meta {
+color:#aec;
+}// End Hint Theme
 
 /* STOP */
 
@@ -356,38 +409,3 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
     visibility: hidden;
   }
 }
-
-/*
-
-    Name:       Tomorrow Night - Eighties
-    Author:     Chris Kempson
-
-    CodeMirror template by Jan T. Sott (https://github.com/idleberg/base16-codemirror)
-    Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
-
-*/
-
-.cm-s-tomorrow-night-eighties.CodeMirror {background: #000000; color: #CCCCCC;}
-.cm-s-tomorrow-night-eighties div.CodeMirror-selected {background: #2D2D2D !important;}
-.cm-s-tomorrow-night-eighties .CodeMirror-gutters {background: #000000; border-right: 0px;}
-.cm-s-tomorrow-night-eighties .CodeMirror-linenumber {color: #515151;}
-.cm-s-tomorrow-night-eighties .CodeMirror-cursor {border-left: 1px solid #6A6A6A !important;}
-
-.cm-s-tomorrow-night-eighties span.cm-comment {color: #d27b53;}
-.cm-s-tomorrow-night-eighties span.cm-atom {color: #a16a94;}
-.cm-s-tomorrow-night-eighties span.cm-number {color: #a16a94;}
-
-.cm-s-tomorrow-night-eighties span.cm-property, .cm-s-tomorrow-night-eighties span.cm-attribute {color: #99cc99;}
-.cm-s-tomorrow-night-eighties span.cm-keyword {color: #f2777a;}
-.cm-s-tomorrow-night-eighties span.cm-string {color: #ffcc66;}
-
-.cm-s-tomorrow-night-eighties span.cm-variable {color: #99cc99;}
-.cm-s-tomorrow-night-eighties span.cm-variable-2 {color: #6699cc;}
-.cm-s-tomorrow-night-eighties span.cm-def {color: #f99157;}
-.cm-s-tomorrow-night-eighties span.cm-bracket {color: #CCCCCC;}
-.cm-s-tomorrow-night-eighties span.cm-tag {color: #f2777a;}
-.cm-s-tomorrow-night-eighties span.cm-link {color: #a16a94;}
-.cm-s-tomorrow-night-eighties span.cm-error {background: #f2777a; color: #6A6A6A;}
-
-.cm-s-tomorrow-night-eighties .CodeMirror-activeline-background {background: #343600 !important;}
-.cm-s-tomorrow-night-eighties .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}

@@ -1,7 +1,6 @@
 'use strict';
 
 var gitStrip = require('../lib/gitStrip.js'),
-    testData = './fixtures/test',
     dummyFunction = function() {};
 
 exports['gitstrip'] = {
@@ -20,7 +19,7 @@ exports['gitstrip'] = {
   },
   'normal operation': function(test) {
     test.expect(1);
-    test.doesNotThrow(gitStrip(testData, dummyFunction), 'Should not throw an error when a valid file is passed');
+    test.doesNotThrow(gitStrip('fixtures/test', dummyFunction), 'Should not throw an error when a valid file is passed');
     test.done();
   }
 };
