@@ -34,6 +34,10 @@ module.exports = function(grunt) {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit']
       },
+      scripts: {
+        files: ['public/js/*.js', 'public/scss/*.scss'],
+        tasks: ['browserify', 'sass']
+      }
     },
     browserify: {
       dist: {

@@ -18,13 +18,13 @@ var express = require('express'),
     path = require('path'),
     exec = require('child_process').exec,
     userArgs = process.argv.slice(2),
-	searchParam = userArgs[0],
+	fileLocation = userArgs[0],
 	gitStrip = require('./lib/gitStrip');
 
-// Strip the passed file and build the page/service
-gitStrip(searchParam, function(err, result) {
-
-	if(err) throw 'There was a problem opening the file: ' + err;
+// Read the passed file, strip the git comments, and build the web service
+fs.readFile(fileLocation, function(err, result) {
+	if (err) throw 'There was a problem opening the file: ' + err;	
+	var resultArray = gitStrip(result.toString());
 
 	/*
 	 * Application configuration and initiation
@@ -40,10 +40,10 @@ gitStrip(searchParam, function(err, result) {
 
 	// Route to retrive files on the system for editing
 	app.get('/', function (req, res) {
-		res.render('editor', { body: result });
+		res.render('editor', { body: resultArray });
 	});
 
-	// Route for persisting to the file system
+	// Route for persisting to the file system then closing out
 	app.post('/save', function (req) {
 		var location = '.' + req.body.location.replace('/file',''),
 			content = req.body.text;
@@ -58,5 +58,6 @@ gitStrip(searchParam, function(err, result) {
 	 */
 	app.listen(port);
 	
+	// Open the browser to the page
 	exec('open http://localhost:' + port);
 });

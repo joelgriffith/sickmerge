@@ -14,3 +14,8 @@ var leftPanel = new CodeMirrorMerge.MergeView(document.getElementById('git-diff'
 
 // Set the height to fill the screen
 $('.CodeMirror-merge, .CodeMirror-merge .CodeMirror').height($(window).height() - $('.toolbar').height());
+
+// On Save
+$('[data-id="save-file"]').click(function() {
+	console.log(leftPanel.edit.getValue());
+});
