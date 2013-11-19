@@ -11,3 +11,6 @@ var leftPanel = new CodeMirrorMerge.MergeView(document.getElementById('git-diff'
 	mode: 'javascript',
 	lineNumbers: true
 });
+
+// Set the height to fill the screen
+$('.CodeMirror-merge, .CodeMirror-merge .CodeMirror').height($(window).height() - $('.toolbar').height());
