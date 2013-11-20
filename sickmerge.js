@@ -17,21 +17,15 @@ var fs = require('fs'),
 // Program Setup and Options
 program
     .version('0.0.1')
-    .usage('[options] <file location ...>')
-    .option('-h, --hostname [value]', 'The hostname you wish to use (defaults to localhost)')
-    .option('-p, --port <n>', 'The port you wish to deploy on (defaults to 3000)', parseInt)
-    .option('-m, --merge [value]', 'What you want to display in the middle (merged) window on instantiation. Valid options are "yours", "theirs", and "both". Defaults to "yours"')
+    .usage('[options] <conflicted file location>')
+    .option('-h, --hostname [value]', 'The host URL you wish to query in the browser (defaults to localhost).')
+    .option('-p, --port <n>', 'The port you wish to deploy on (defaults to 3000).', parseInt)
+    .option('-m, --merge [value]', 'Specify the initial view in the middle (merged) window on instantiation. Valid options are "yours", "theirs", and "both". Defaults to "yours"')
     .parse(process.argv);
 
 // No File given, print the help
 if (!program.args[0]) {
     program.outputHelp();
-    return;
-}
-
-// Invalid merge input
-if (['yours', 'theirs', 'both'].indexOf(program.merge) === -1) {
-    console.log('You specified an invalid merge result, please use either "yours", "theirs", or "both"');
     return;
 }
 
@@ -43,8 +37,7 @@ fs.readFile(program.args[0], 'UTF-8', function(err, result) {
     var hostname = (program.hostname) ? program.hostname : 'localhost',
         port = (program.port) ? program.port : 3000,
         merge = (program.merge) ? program.merge : 'yours',
-        gitStrip = require('./lib/gitStrip'),
-        resultArray = gitStrip(result, merge),
+        resultArray = require('./lib/gitStrip')(result, merge),
         express = require('express'),
         app = express(),
         exec = require('child_process').exec,
