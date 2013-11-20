@@ -1,52 +1,71 @@
-// JSHint Theme
+// Merge Theme
+$background-color: #111;
+
+.CodeMirror {
+	background-color: $background-color;
+
+	pre {
+		color: #f2f2f2;
+	}
+}
+.CodeMirror-gutters {
+	border-right: 1px solid #333;
+	background-color: $background-color;
+}
+.CodeMirror-merge {
+	border: none;
+}
+.CodeMirror-merge-gap {
+	background-color: $background-color;
+}
 div.CodeMirror span.CodeMirror-matchingbracket,.cm-s-default span.cm-bracket2 {
-color:#0f0;
+	color:#0f0;
 }
 
 button:hover,.sidebar li a:hover {
-text-decoration:none;
+	text-decoration:none;
 }
 
 .sidebar li a,.cm-s-default span.cm-bracket,.cm-s-default span.cm-bracket1,.cm-s-default span.cm-property,.cm-s-default span.cm-operator {
-color:#aaa;
+	color:#aaa;
 }
 
 .whiteboard button.active,.whiteboard #configure button.active:before,.cm-s-default span.cm-comment {
-color:#9ac;
+	color:#9ac;
 }
 
 .cm-s-default span.cm-bracket3,.cm-s-default span.cm-bracket8 {
-color:#00ff7f;
+	color:#00ff7f;
 }
 
 .cm-s-default span.cm-bracket4,.cm-s-default span.cm-bracket9 {
-color:#0ff;
+	color:#0ff;
 }
 
 .cm-s-default span.cm-bracket5,.cm-s-default span.cm-bracket10 {
-color:#836FFF;
+	color:#836FFF;
 }
 
 .cm-s-default span.cm-bracket6,.cm-s-default span.cm-bracket11 {
-color:#F0F;
+	color:#F0F;
 }
 
 .cm-s-default span.cm-bracket7,.cm-s-default span.cm-bracket12 {
-color:#9B30FF;
+	color:#9B30FF;
 }
 
 .cm-s-default span.cm-symbol,.cm-s-default span.cm-variable,.cm-s-default span.cm-number {
-color:#ccc;
+	color:#ccc;
 }
 
 .cm-s-default span.cm-variable-2,.cm-s-default span.cm-def,.cm-s-default span.cm-tag {
-color:#acf;
+	color:#acf;
 }
 
 .cm-s-default span.cm-string,.cm-s-default span.cm-string-2 {
-color:#add;
+	color:#add;
 }
 
 .cm-s-default span.cm-builtin,.cm-s-default span.cm-header,.cm-s-default span.cm-keyword,.cm-s-default span.cm-qualifier,.cm-s-default span.cm-attribute,.cm-s-default span.cm-meta {
-color:#aec;
-}// End Hint Theme
+	color:#aec;
+}

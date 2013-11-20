@@ -22,10 +22,9 @@ var express = require('express'),
 	gitStrip = require('./lib/gitStrip');
 
 // Read the passed file, strip the git comments, and build the web service
-fs.readFile(fileLocation, function(err, result) {
+fs.readFile(fileLocation, 'UTF-8', function(err, result) {
 	if (err) throw 'There was a problem opening the file: ' + err;	
-	var resultArray = gitStrip(result.toString());
-
+	var resultArray = gitStrip(result);
 	/*
 	 * Application configuration and initiation
 	 */

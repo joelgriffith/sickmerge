@@ -1,7 +1,6 @@
 'use strict';
 
-var gitStrip = require('../lib/gitStrip.js'),
-    dummyFunction = function() {};
+var gitStrip = require('../lib/gitStrip.js');
 
 exports['gitstrip'] = {
   setUp: function(done) {
@@ -9,7 +8,7 @@ exports['gitstrip'] = {
   },
   'no args': function(test) {
     test.expect(1);
-    test.equal(gitStrip(), 'Please pass a file to parse and a callback function', 'Should show an error message.');
+    test.equal(gitStrip(), 'Please pass conflicted file to parse', 'Should show an error message.');
     test.done();
   },
   'invalid file' : function(test) {
@@ -19,7 +18,7 @@ exports['gitstrip'] = {
   },
   'normal operation': function(test) {
     test.expect(1);
-    test.doesNotThrow(gitStrip('fixtures/test', dummyFunction), 'Should not throw an error when a valid file is passed');
+    test.doesNotThrow(gitStrip('<<<<<<< Master\n Some Text\n ======\n Other Text >>>>>>> Remote'), 'Should not throw an error when a valid file is passed');
     test.done();
   }
 };
