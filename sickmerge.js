@@ -29,6 +29,12 @@ if (!program.args[0]) {
     return;
 }
 
+// Invalid merge option
+if (program.merge && ['yours', 'theirs', 'both'].indexOf(program.merge) === -1) {
+    console.log('You specified an invalid initial merged view: ' + program.merge + '.\nPlease use either "yours", "theirs", or "both"');
+    return;
+}
+
 // Read the passed file, strip the git comments, and build the web service
 fs.readFile(program.args[0], 'UTF-8', function(err, result) {
     if (err) return console.log('There was an error loading your file! ' + err);
