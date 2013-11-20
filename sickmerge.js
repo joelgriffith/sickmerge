@@ -50,24 +50,18 @@ fs.readFile(program.args[0], 'UTF-8', function(err, result) {
         exec = require('child_process').exec,
         path = require('path');    
 
-    /*
-     * Application configuration and initiation
-     */
+    // Web server setup
     app.use(express.bodyParser());
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
-
-    /*
-     * Serve the static public directory
-     */
     app.use(express.static(path.join(__dirname, 'public')));
 
-    // Route to retrive files on the system for editing
+    // Build the base route for the page
     app.get('/', function (req, res) {
         res.render('editor', { body: resultArray });
     });
 
-    // Route for persisting to the file system then closing out
+    // Post route for saving the file (this is final) and close the process
     app.post('/save', function (req) {
         var location = '.' + req.body.location.replace('/file',''),
             content = req.body.text;
@@ -76,12 +70,8 @@ fs.readFile(program.args[0], 'UTF-8', function(err, result) {
             if (err) throw err;
         });
     });
-
-    /* 
-     * Startup the server
-     */
-    app.listen(port);
     
-    // Open the browser to the page
+    // Open the browser to the page    
+    app.listen(port);
     exec('open http://' + hostname + ':' + port);
 });
