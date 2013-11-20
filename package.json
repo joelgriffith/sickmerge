@@ -29,10 +29,11 @@
     "test": "grunt nodeunit"
   },
   "dependencies": {
-    "express": "3.3.4",
-    "ejs": "0.8.4",
-    "code-mirror": "3.19.0-1",
-    "jquery-browserify": "1.8.1"
+    "express": "~3.3.4",
+    "ejs": "~0.8.4",
+    "code-mirror": "~3.19.0-1",
+    "jquery-browserify": "~1.8.1",
+    "commander": "~2.0.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
