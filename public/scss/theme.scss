@@ -10,6 +10,10 @@ $background-color: #111;
 	pre {
 		color: #f2f2f2;
 	}
+
+	div.CodeMirror-cursor {
+		border-color: white;
+	}
 }
 .CodeMirror-gutters {
 	border-right: 1px solid #333;
