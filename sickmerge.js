@@ -12,7 +12,8 @@
  * Module Dependencies
  */
 var fs = require('fs'),
-    program = require('commander');
+    program = require('commander'),
+    fileLocation;
 
 // Program Setup and Options
 program
@@ -23,20 +24,23 @@ program
     .option('-m, --merge [value]', 'Specify the initial view in the middle (merged) window on instantiation. Valid options are "yours", "theirs", and "both". Defaults to "yours"')
     .parse(process.argv);
 
-// No File given, print the help
-if (!program.args[0]) {
+// Store the file location so we can persist later
+fileLocation = program.args[0];
+
+// No File given, print help since it's required
+if (!fileLocation) {
     program.outputHelp();
     return;
 }
 
 // Invalid merge option
 if (program.merge && ['yours', 'theirs', 'both'].indexOf(program.merge) === -1) {
-    console.log('You specified an invalid initial merged view: ' + program.merge + '.\nPlease use either "yours", "theirs", or "both"');
+    console.log('You\'ve specified an invalid initial merged view: "' + program.merge + '".\nPlease use either "yours", "theirs", or "both"');
     return;
 }
 
 // Read the passed file, strip the git comments, and build the web service
-fs.readFile(program.args[0], 'UTF-8', function(err, result) {
+fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     if (err) return console.log('There was an error loading your file! ' + err);
 
     // Setup parameters, load additional files
@@ -62,11 +66,10 @@ fs.readFile(program.args[0], 'UTF-8', function(err, result) {
 
     // Post route for saving the file (this is final) and close the process
     app.post('/save', function (req) {
-        var location = '.' + req.body.location.replace('/file',''),
-            content = req.body.text;
-
-        fs.writeFile(location, content, function (err) {
-            if (err) throw err;
+        var content = req.body;
+        fs.writeFile(fileLocation, content, function (err) {
+            if (err) throw "There was an issues saving your file: " + err;
+            process.exit();
         });
     });
     

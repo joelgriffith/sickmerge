@@ -17,5 +17,14 @@ $('.CodeMirror-merge, .CodeMirror-merge .CodeMirror').height($(window).height() 
 
 // On Save
 $('[data-id="save-file"]').click(function() {
-	console.log(leftPanel.edit.getValue());
+	var finalFile = leftPanel.edit.getValue();
+
+	$.ajax({
+		url: '/save',
+		type: 'post',
+		data: finalFile,
+		complete: function() {
+			window.close();
+		}
+	});
 });
