@@ -66,7 +66,8 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
 
     // Post route for saving the file (this is final) and close the process
     app.post('/save', function (req) {
-        var content = req.body;
+        var content = req.body.content;
+        console.log(content);
         fs.writeFile(fileLocation, content, function (err) {
             if (err) throw "There was an issues saving your file: " + err;
             process.exit();

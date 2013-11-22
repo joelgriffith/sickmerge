@@ -17,13 +17,14 @@ $('.CodeMirror-merge, .CodeMirror-merge .CodeMirror').height($(window).height() 
 
 // On Save
 $('[data-id="save-file"]').click(function() {
-	var finalFile = leftPanel.edit.getValue();
+	var finalFile = { content: leftPanel.edit.getValue() };
 
 	$.ajax({
 		url: '/save',
 		type: 'post',
 		data: finalFile,
-		complete: function() {
+		dataType: 'json',
+		success: function() {
 			window.close();
 		}
 	});
