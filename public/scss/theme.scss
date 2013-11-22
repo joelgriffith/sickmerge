@@ -2,6 +2,9 @@
 $background-color: #111;
 
 .CodeMirror {
+	font-family: 'Droid Sans Mono', sans-serif;
+	font-size: 11px;
+	line-height: 13px;
 	background-color: $background-color;
 
 	pre {
@@ -68,4 +71,21 @@ button:hover,.sidebar li a:hover {
 
 .cm-s-default span.cm-builtin,.cm-s-default span.cm-header,.cm-s-default span.cm-keyword,.cm-s-default span.cm-qualifier,.cm-s-default span.cm-attribute,.cm-s-default span.cm-meta {
 	color:#aec;
+}
+
+.cm-s-default .CodeMirror-selected {
+	color: #555;
+}
+
+.CodeMirror-merge-l-connect {
+	fill: #555;
+	stroke: #777;
+}
+
+.CodeMirror-merge-l-chunk-end {
+	border-color: #777;
+}
+
+.CodeMirror-merge-l-chunk {
+	background: #555;
 }
