@@ -24,7 +24,7 @@ $('[data-id="save-file"]').click(function() {
 		type: 'post',
 		data: finalFile,
 		dataType: 'json',
-		success: function() {
+		complete: function() {
 			window.close();
 		}
 	});
