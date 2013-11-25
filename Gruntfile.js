@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
     nodeunit: {
       files: ['test/**/*_test.js'],
     },
@@ -36,7 +37,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['public/js/*.js', 'public/scss/*.scss'],
-        tasks: ['browserify', 'sass']
+        tasks: ['browserify', 'sass', 'uglify']
       }
     },
     browserify: {
@@ -55,10 +56,21 @@ module.exports = function(grunt) {
           'public/build/css/main.css': 'public/scss/main.scss'
         }
       }
+    },
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+      },
+      dist: {
+        files: {
+          'public/build/js/main.js': ['public/build/js/main.js']
+        }
+      }
     }
   });
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -66,6 +78,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sass');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'browserify', 'sass']);
+  grunt.registerTask('default', ['jshint', 'browserify', 'uglify', 'sass']);
 
 };
