@@ -27,7 +27,7 @@ var leftPanel = new CodeMirrorMerge.MergeView(document.getElementById('git-diff'
 $('[data-id="save-file"]').click(function() {
 	var finalFile = { content: leftPanel.edit.getValue() };
 
-	// Send the code over and close
+	// Send the code over and close on complete
 	$.ajax({
 		url: '/save',
 		type: 'post',
@@ -41,5 +41,12 @@ $('[data-id="save-file"]').click(function() {
 
 // On Cancel
 $('[data-id="cancel"]').click(function() {
-	window.close();
+
+	// Send the kill signal and close
+	$.ajax({
+		url: '/cancel',
+		complete: function() {
+			window.close();
+		}
+	});
 });

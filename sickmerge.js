@@ -72,6 +72,12 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
             process.exit();
         });
     });
+
+    // Post route for cancelling the file (this is final) and close the process
+    app.get('/cancel', function (req, res) {
+        res.send('terminated');
+        process.exit();
+    });
     
     // Open the browser to the page    
     app.listen(port);
