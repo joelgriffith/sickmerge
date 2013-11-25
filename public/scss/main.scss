@@ -5,8 +5,9 @@
 
 // Setup
 html, body {
-    background-color: #002b36;
-    color: #839496;   
+  font-family: 'Droid Sans Mono', sans-serif;
+  background-color: #002b36;
+  color: #839496;   
 }
 
 // Convenience classes
@@ -14,20 +15,55 @@ html, body {
   display: none;
 }
 
+h1 {
+  margin-left: 20px;
+  font-size: 20px;
+  line-height: 36px;
+}
+
+// The area that Code Mirror builds into
 #git-diff {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 50px;
+    top: 50px;
+    left: 20px;
+    right: 20px;
+    bottom: 70px;
 }
 
 // Toolbar
 .toolbar {
+  border-top: 1px solid #ddd;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: #ccc;
+  background: #073642;
   height: 50px;
+}
+
+// Buttons
+button {
+  border: none;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  outline: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  margin: 8px 0 0 10px;
+  float: right;
+}
+.save {
+  background-color: #0f8bd2;
+  margin-right: 20px;
+}
+.cancel {
+  background-color: #C43D31;
+}
+.yours {
+  background-color: #6C71C4;
+}
+.theirs {
+  background-color: #B58900;
 }

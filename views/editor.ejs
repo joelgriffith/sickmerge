@@ -13,13 +13,15 @@
 			<p class="theirs"><%- body[2] %></p>
 		</div>
 		
-		<h1>Sick-merging: <%= title %></h1>
+		<h1><%= title %></h1>
 
 		<div id="git-diff" spellcheck="false"></div>
 		
 		<div class="toolbar">
-			<button button type="button" class="btn btn-primary" data-id="save-file">Save File</button>
-			<button button type="button" class="btn btn-default" data-id="cancel">Cancel</button>
+			<button class="save" data-id="save-file">Save</button>
+			<button class="yours" data-id="merge-yours">Yours</button>
+			<button class="theirs" data-id="merge-theirs">Theirs</button>
+			<button class="cancel" data-id="cancel">Cancel</button>
 		</div>
 		<script src="/build/js/main.js"></script>
 	</body>
