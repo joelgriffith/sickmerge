@@ -1,24 +1,33 @@
+/*
+ *	Dependencies
+ */
 var CodeMirrorMerge = require('code-mirror/addon/merge'),
 	CodeMirror = require('code-mirror/mode/javascript'),
 	$ = require('jquery-browserify');
 
+/*
+ *	3-Way setup
+ */
 var leftPanel = new CodeMirrorMerge.MergeView(document.getElementById('git-diff'), {
 	value: $('.both').html(),
 	origLeft: $('.yours').html(),
 	origRight: $('.theirs').html(),
 	highlightDifferences: true,
 	smartIndent: true,
-	mode: 'javascript',
+	mode: 'javascript', // TODO: Dynamically load other modes
+	theme: 'solarized-dark',
 	lineNumbers: true
 });
 
-// Set the height to fill the screen
-$('.CodeMirror-merge, .CodeMirror-merge .CodeMirror').height($(window).height() - $('.toolbar').height());
+/*
+ *	Button Functionality
+ */
 
 // On Save
 $('[data-id="save-file"]').click(function() {
 	var finalFile = { content: leftPanel.edit.getValue() };
 
+	// Send the code over and close
 	$.ajax({
 		url: '/save',
 		type: 'post',
@@ -28,4 +37,9 @@ $('[data-id="save-file"]').click(function() {
 			window.close();
 		}
 	});
+});
+
+// On Cancel
+$('[data-id="cancel"]').click(function() {
+	window.close();
 });

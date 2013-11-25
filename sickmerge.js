@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-
 /*
  * sickmerge
  * https://github.com/jgriffith/sickmerge
@@ -61,7 +60,7 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
 
     // Build the base route for the page
     app.get('/', function (req, res) {
-        res.render('editor', { body: resultArray });
+        res.render('editor', { title: fileLocation, body: resultArray });
     });
 
     // Post route for saving the file (this is final) and close the process
