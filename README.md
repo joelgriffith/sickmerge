@@ -36,14 +36,17 @@ Prints the available language syntaxes for code highlighting when in the browser
 ## Examples
 ### Standard usage
 `sickmerge conflict.js`
+
 Loads conflict.js in the current location, and starts up a express app at `http://localhost:3000/` and opens your browser to that address.
 
 ### Using the port and hostname options
 `sickmerge -p 1337 -h hyrule conflict.js`
+
 Same as above, except this will deploy on port `1337` and open your browser to `http://hyrule:1337`
 
 ### Using the syntax highlighting
 `sickmerge -s javascript conflict.js`
+
 Opens to `http://localhost:3000` and sets the syntax to JavaScript.
 
 ## Thanks
