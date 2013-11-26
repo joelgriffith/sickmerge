@@ -1,5 +1,5 @@
 {
-  "name": "Sickmerge",
+  "name": "sickmerge",
   "description": "A git command-line conflict resolution tool. In the browser.",
   "version": "0.0.1",
   "keywords": ["git", "merge", "conflict", "command-line", "code-mirror", "resolution"],
