@@ -1,6 +1,6 @@
 {
   "name": "Sickmerge",
-  "description": "A git conflict resolution tool for the browser.",
+  "description": "A git conflict resolution tool. In the browser!",
   "version": "0.0.1",
   "homepage": "https://github.com/jgriffith/sickmerge",
   "author": {
@@ -25,9 +25,6 @@
   "engines": {
     "node": ">= 0.10.21"
   },
-  "scripts": {
-    "test": "grunt nodeunit"
-  },
   "dependencies": {
     "express": "~3.3.4",
     "ejs": "~0.8.4",
@@ -37,7 +34,6 @@
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.1",
     "grunt-sass": "~0.8.0",
