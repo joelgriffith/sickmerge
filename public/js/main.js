@@ -6,18 +6,20 @@ var CodeMirrorMerge = require('code-mirror/addon/merge'),
 	CodeMirror = require('code-mirror'),
 	$ = require('jquery-browserify'),
 	mode = ($('.mode').html()) ? $('.mode').html() : null,
-	syntaxLib = (mode) ? require('code-mirror/mode/' + mode + '.js') : '';
+	syntaxLib = (mode) ? require('code-mirror/mode/' + mode + '.js') : '',
+	hilight = true;
 
 
 /*
  *	3-Way setup
  */
-var leftPanel = new CodeMirror.MergeView(document.getElementById('git-diff'), {
+var mergeView = new CodeMirror.MergeView(document.getElementById('git-diff'), {
 	value: $('.both').html(),
 	origLeft: $('.yours').html(),
 	origRight: $('.theirs').html(),
-	highlightDifferences: true,
+	highlightDifferences: hilight,
 	smartIndent: true,
+	title: 'Merging',
 	theme: 'solarized-dark',
 	mode: mode,
 	lineNumbers: true
@@ -29,7 +31,7 @@ var leftPanel = new CodeMirror.MergeView(document.getElementById('git-diff'), {
 
 // On Save
 $('[data-id="save-file"]').click(function() {
-	var finalFile = { content: leftPanel.edit.getValue() };
+	var finalFile = { content: mergeView.edit.getValue() };
 
 	// Send the code over and close on complete
 	$.ajax({
@@ -45,6 +47,17 @@ $('[data-id="save-file"]').click(function() {
 
 // Selecting Yours
 $('[data-id="merge-yours"]').click(function() {
+	mergeView.edit.setValue(mergeView.leftOriginal().doc.getValue());
+});
+
+// Selecting Theirs
+$('[data-id="merge-theirs"]').click(function() {
+	mergeView.edit.setValue(mergeView.rightOriginal().doc.getValue());
+});
+
+// Hiding Diff
+$('[data-id="hide-diff"]').click(function() {
+	mergeView.setShowDifferences(hilight = !hilight);
 });
 
 // On Cancel

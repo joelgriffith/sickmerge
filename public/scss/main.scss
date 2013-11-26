@@ -21,6 +21,17 @@ h1 {
   line-height: 36px;
 }
 
+.titles {
+  h2 {
+    width: 34.5%;
+    display: inline-block;
+
+    &:first-child {
+      margin-left: 20px;
+    }
+  }
+}
+
 // The area that Code Mirror builds into
 #git-diff {
     position: absolute;
@@ -53,17 +64,12 @@ button {
   cursor: pointer;
   margin: 8px 0 0 10px;
   float: right;
+  background-color: #6C71C4;
 }
 .save {
   background-color: #0f8bd2;
-  margin-right: 20px;
 }
 .cancel {
   background-color: #C43D31;
-}
-.yours {
-  background-color: #6C71C4;
-}
-.theirs {
-  background-color: #B58900;
+  margin-right: 20px;
 }

@@ -15,14 +15,21 @@
 		</div>
 		
 		<h1>Merging: <%= title %></h1>
-
+		
+		<div class="titles">
+			<h2>Local</h2>
+			<h2>Result</h2>
+			<h2>Incoming</h2>
+		</div>
+		
 		<div id="git-diff" spellcheck="false"></div>
 		
 		<div class="toolbar">
-			<button class="save" data-id="save-file">Save</button>
-			<button class="yours" data-id="merge-yours">Yours</button>
-			<button class="theirs" data-id="merge-theirs">Theirs</button>
 			<button class="cancel" data-id="cancel">Cancel</button>
+			<button class="hide-diff" data-id="hide-diff">Toggle Differences</button>
+			<button class="theirs" data-id="merge-theirs">Accept Theirs</button>
+			<button class="yours" data-id="merge-yours">Accept Yours</button>
+			<button class="save" data-id="save-file">Save</button>
 		</div>
 		<script src="/build/js/main.js"></script>
 	</body>

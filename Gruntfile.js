@@ -32,8 +32,10 @@ module.exports = function(grunt) {
     },
     webpack: {
       dist: {
-        files: {
-          'public/build/js/main.js': ['public/js/*.js']
+        entry: './public/js/main.js',
+        output: {
+          path: './public/build/js/',
+          filename: 'main.js'
         }
       }
     },
