@@ -1,7 +1,7 @@
 {
   "name": "sickmerge",
   "description": "A git command-line conflict resolution tool. In the browser.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": ["git", "merge", "conflict", "command-line", "code-mirror", "resolution"],
   "homepage": "https://github.com/joelgriffith/sickmerge",
   "author": {
@@ -24,7 +24,7 @@
   ],
   "main": "sickmerge",
   "engines": {
-    "node": ">= 0.10.21"
+    "node": ">= 0.10.18"
   },
   "dependencies": {
     "express": "~3.3.4",
