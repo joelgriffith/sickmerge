@@ -1,7 +1,7 @@
 {
   "name": "sickmerge",
   "description": "A git command-line conflict resolution tool. In the browser.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": ["git", "merge", "conflict", "command-line", "code-mirror", "resolution"],
   "homepage": "https://github.com/joelgriffith/sickmerge",
   "author": {
