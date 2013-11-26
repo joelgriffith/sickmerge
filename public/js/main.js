@@ -4,7 +4,10 @@
 var CodeMirrorMerge = require('code-mirror/addon/merge'),
 	CodeMirrorLoadMode = require('code-mirror/addon/mode/loadmode'),
 	CodeMirror = require('code-mirror'),
-	$ = require('jquery-browserify');
+	$ = require('jquery-browserify'),
+	syntax = require('code-mirror/mode/' + $('.mode').html() + '.js'),
+	mode = $('.mode').html();
+
 
 /*
  *	3-Way setup
@@ -16,11 +19,9 @@ var leftPanel = new CodeMirror.MergeView(document.getElementById('git-diff'), {
 	highlightDifferences: true,
 	smartIndent: true,
 	theme: 'solarized-dark',
+	mode: mode,
 	lineNumbers: true
 });
-
-CodeMirror.modeURL = "mode/%N.js";
-CodeMirror.autoLoadMode(leftPanel, "ruby");
 
 /*
  *	Button Functionality
@@ -44,7 +45,6 @@ $('[data-id="save-file"]').click(function() {
 
 // Selecting Yours
 $('[data-id="merge-yours"]').click(function() {
-	console.log(leftPanel.left.getValue());
 });
 
 // On Cancel
