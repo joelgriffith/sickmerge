@@ -5,8 +5,8 @@ var CodeMirrorMerge = require('code-mirror/addon/merge'),
 	CodeMirrorLoadMode = require('code-mirror/addon/mode/loadmode'),
 	CodeMirror = require('code-mirror'),
 	$ = require('jquery-browserify'),
-	syntax = require('code-mirror/mode/' + $('.mode').html() + '.js'),
-	mode = $('.mode').html();
+	mode = ($('.mode').html()) ? $('.mode').html() : null,
+	syntaxLib = (mode) ? require('code-mirror/mode/' + mode + '.js') : '';
 
 
 /*

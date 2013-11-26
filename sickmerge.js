@@ -20,6 +20,7 @@ program
     .usage('[options] <conflicted file location>')
     .option('-h, --hostname [value]', 'The host URL you wish to query in the browser (defaults to localhost).')
     .option('-p, --port <n>', 'The port you wish to deploy on (defaults to 3000).', parseInt)
+    .option('-s, --syntax [value]', 'The language of the file for syntax highlighting (optional), defaults to none.')
     .option('-m, --merge [value]', 'Specify the initial view in the middle (merged) window on instantiation. Valid options are "yours", "theirs", and "both". Defaults to "yours"')
     .parse(process.argv);
 
@@ -46,6 +47,7 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     var hostname = (program.hostname) ? program.hostname : 'localhost',
         port = (program.port) ? program.port : 3000,
         merge = (program.merge) ? program.merge : 'yours',
+        syntax = (program.syntax) ? program.syntax : '',
         resultArray = require('./lib/gitStrip')(result, merge),
         express = require('express'),
         app = express(),
@@ -60,7 +62,11 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
 
     // Build the base route for the page
     app.get('/', function (req, res) {
-        res.render('editor', { title: fileLocation, body: resultArray });
+        res.render('editor', { 
+            title: fileLocation, 
+            syntax: syntax,
+            body: resultArray 
+        });
     });
 
     // Post route for saving the file (this is final) and closes the process
