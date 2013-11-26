@@ -37,10 +37,10 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['public/js/*.js', 'public/scss/*.scss'],
-        tasks: ['browserify', 'sass']
+        tasks: ['webpack', 'sass']
       }
     },
-    browserify: {
+    webpack: {
       dist: {
         files: {
           'public/build/js/main.js': ['public/js/*.js']
@@ -74,10 +74,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-webpack');
   grunt.loadNpmTasks('grunt-sass');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'browserify', 'uglify', 'sass']);
+  grunt.registerTask('default', ['jshint', 'webpack', 'uglify', 'sass']);
 
 };

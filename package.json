@@ -40,10 +40,11 @@
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.1",
-    "browserify": "~2.35.4",
+    "webpack": "~0.11.7",
     "grunt-browserify": "~1.2.11",
     "grunt-sass": "~0.8.0",
-    "grunt-contrib-uglify": "~0.2.7"
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-webpack": "~0.11.1"
   },
   "preferGlobal": "true",
   "bin": {
