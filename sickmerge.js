@@ -72,8 +72,8 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
         resultArray = require('./lib/gitStrip')(result, merge),
         express = require('express'),
         app = express(),
-        exec = require('child_process').exec,
-        path = require('path');    
+        path = require('path'),
+        open = require('open');   
 
     // Web server setup
     app.use(express.bodyParser());
@@ -108,5 +108,5 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     
     // Open the browser to the page    
     app.listen(port);
-    exec('open http://' + hostname + ':' + port);
+    open('http://' + hostname + ':' + port);
 });
