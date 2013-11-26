@@ -3,7 +3,7 @@
   "description": "A git command-line conflict resolution tool. In the browser.",
   "version": "0.0.1",
   "keywords": ["git", "merge", "conflict", "command-line", "code-mirror", "resolution"],
-  "homepage": "https://github.com/jgriffith/sickmerge",
+  "homepage": "https://github.com/joelgriffith/sickmerge",
   "author": {
     "name": "jgriffith",
     "email": "joel@joelgriffith.net",

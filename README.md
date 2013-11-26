@@ -34,30 +34,30 @@ Optional. The language syntax you wish to use when viewing in the browser. To se
 Prints the available language syntaxes for code highlighting when in the browser.
 
 ## Examples
-### Standard usage
+- Standard usage
 `sickmerge conflict.js`
 
 Loads conflict.js in the current location, and starts up a express app at `http://localhost:3000/` and opens your browser to that address.
 
-### Using the port and hostname options
+- Using the port and hostname options
 `sickmerge -p 1337 -h hyrule conflict.js`
 
 Same as above, except this will deploy on port `1337` and open your browser to `http://hyrule:1337`
 
-### Using the syntax highlighting
+- Using the syntax highlighting
 `sickmerge -s javascript conflict.js`
 
 Opens to `http://localhost:3000` and sets the syntax to JavaScript.
 
-## Thanks
+### Thanks
 A big thanks to the numerous libraries that this sits on. In no particular order: Node, Express, Commander, EJS, Webpack, Code-Mirror, and Diff-Patch-Match.
 
-## Contributing
+### Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Be sure to lint your code and make sure it handles some edge-cases. In the near future, unit tests will be mandatory.
 
-## Release History
+### Release History
 v0.0.1 - Initial release
 
-## License
-Copyright (c) 2013 jgriffith  
+### License
+Copyright (c) 2013 joelgriffith  
 Licensed under the MIT license.
