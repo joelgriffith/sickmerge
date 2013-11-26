@@ -8,7 +8,7 @@
  */
 
  /*
- * Module Dependencies
+ * Module Dependencies/Setup
  */
 var fs = require('fs'),
     program = require('commander'),
@@ -63,7 +63,7 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
         res.render('editor', { title: fileLocation, body: resultArray });
     });
 
-    // Post route for saving the file (this is final) and close the process
+    // Post route for saving the file (this is final) and closes the process
     app.post('/save', function (req, res) {
         var content = req.body.content;
         fs.writeFile(fileLocation, content, function (err) {
@@ -73,7 +73,7 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
         });
     });
 
-    // Post route for cancelling the file (this is final) and close the process
+    // Get route for cancelling the file (this is final) and closes the process
     app.get('/cancel', function (req, res) {
         res.send('terminated');
         process.exit();

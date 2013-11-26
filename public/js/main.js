@@ -39,6 +39,11 @@ $('[data-id="save-file"]').click(function() {
 	});
 });
 
+// Selecting Yours
+$('[data-id="merge-yours"]').click(function() {
+	console.log(leftPanel.left.getValue());
+});
+
 // On Cancel
 $('[data-id="cancel"]').click(function() {
 
