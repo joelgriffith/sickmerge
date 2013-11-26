@@ -33,16 +33,13 @@
     "ejs": "~0.8.4",
     "code-mirror": "~3.19.0-1",
     "jquery-browserify": "~1.8.1",
-    "commander": "~2.0.0",
-    "mmmagic": "~0.3.4"
+    "commander": "~2.0.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.1",
-    "webpack": "~0.11.7",
-    "grunt-browserify": "~1.2.11",
     "grunt-sass": "~0.8.0",
     "grunt-contrib-uglify": "~0.2.7",
     "grunt-webpack": "~0.11.1"
