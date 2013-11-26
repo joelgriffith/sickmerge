@@ -2,22 +2,25 @@
  *	Dependencies
  */
 var CodeMirrorMerge = require('code-mirror/addon/merge'),
-	CodeMirror = require('code-mirror/mode/javascript'),
+	CodeMirrorLoadMode = require('code-mirror/addon/mode/loadmode'),
+	CodeMirror = require('code-mirror'),
 	$ = require('jquery-browserify');
 
 /*
  *	3-Way setup
  */
-var leftPanel = new CodeMirrorMerge.MergeView(document.getElementById('git-diff'), {
+var leftPanel = new CodeMirror.MergeView(document.getElementById('git-diff'), {
 	value: $('.both').html(),
 	origLeft: $('.yours').html(),
 	origRight: $('.theirs').html(),
 	highlightDifferences: true,
 	smartIndent: true,
-	mode: 'javascript', // TODO: Dynamically load other modes
 	theme: 'solarized-dark',
 	lineNumbers: true
 });
+
+CodeMirror.modeURL = "mode/%N.js";
+CodeMirror.autoLoadMode(leftPanel, "ruby");
 
 /*
  *	Button Functionality

@@ -63,6 +63,15 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
         res.render('editor', { title: fileLocation, body: resultArray });
     });
 
+    // Route for dynamically loading the mode
+    app.get('/mode/:mode', function (req, res) {
+        var mode = req.params.mode;
+        fs.readFile('./node_modules/code-mirror/mode/' + mode, 'UTF-8', function(err, result) {
+            if (err) throw "There was an issue reading the syntax module";
+            res.send(result);
+        });
+    });
+
     // Post route for saving the file (this is final) and closes the process
     app.post('/save', function (req, res) {
         var content = req.body.content;
