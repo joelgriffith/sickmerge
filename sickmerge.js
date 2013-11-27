@@ -17,7 +17,7 @@ var fs = require('fs'),
 
 // Program Setup and Options
 program
-    .version('0.0.1')
+    .version('0.0.7')
     .usage('[options] <conflicted file location>')
     .option('-h, --hostname [value]', 'The host URL you wish to query in the browser (defaults to localhost).')
     .option('-o, --syntax-options', 'Will show the available syntax options for syntax highlighting.')
