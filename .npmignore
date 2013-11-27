@@ -1,0 +1,11 @@
+# Ignore Dev Files
+public/js/*
+public/scss/*
+
+# Modules
+node_modules
+
+# Logs and system stuff
+npm-debug.log
+.DS_STORE
+.git/

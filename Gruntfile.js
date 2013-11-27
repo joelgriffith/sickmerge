@@ -4,7 +4,10 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    // Configs
     pkg: grunt.file.readJSON('package.json'),
+    dev: './public/dev',
+    build: './public/build',
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -26,15 +29,15 @@ module.exports = function(grunt) {
         tasks: ['jshint:lib']
       },
       scripts: {
-        files: ['public/js/*.js', 'public/scss/*.scss'],
+        files: ['<%= dev %>/js/*.js', '<%= dev %>/scss/*.scss'],
         tasks: ['webpack', 'sass']
       }
     },
     webpack: {
       dist: {
-        entry: './public/js/main.js',
+        entry: '<%= dev %>/js/main.js',
         output: {
-          path: './public/build/js/',
+          path: '<%= build %>/js/',
           filename: 'main.js'
         }
       }
@@ -45,7 +48,7 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'public/build/css/main.css': 'public/scss/main.scss'
+          '<%= build %>/css/main.css': '<%= dev %>/scss/main.scss'
         }
       }
     },
@@ -55,7 +58,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'public/build/js/main.js': ['public/build/js/main.js']
+          '<%= build %>/js/main.js': ['<%= build %>/js/main.js']
         }
       }
     }
