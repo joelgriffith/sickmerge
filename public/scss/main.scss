@@ -16,29 +16,38 @@ html, body {
 }
 
 h1 {
+  font-style: italic;
   margin-left: 20px;
   font-size: 20px;
   line-height: 36px;
 }
 
-.titles {
-  h2 {
-    width: 34.5%;
-    display: inline-block;
-
-    &:first-child {
-      margin-left: 20px;
-    }
-  }
-}
-
 // The area that Code Mirror builds into
 #git-diff {
     position: absolute;
-    top: 50px;
+    top: 60px;
     left: 20px;
     right: 20px;
     bottom: 70px;
+}
+
+.titles {
+  margin: 0 20px;
+
+  h3 {
+    display: inline-block;
+    width: 33.9%;
+    color: #44ee44;
+
+    &:first-child {
+      color: #eeeeff;
+    }
+
+    &:last-child {
+      color: #ffffe0;
+      width: auto;
+    }
+  }
 }
 
 // Toolbar

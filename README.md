@@ -56,7 +56,7 @@ A big thanks to the numerous libraries that this sits on. In no particular order
 In lieu of a formal styleguide, take care to maintain the existing coding style. Be sure to lint your code and make sure it handles some edge-cases. In the near future, unit tests will be mandatory.
 
 ### Release History
-v0.0.3 - Initial release
+v0.0.4 - Initial release
 
 ### License
 Copyright (c) 2013 joelgriffith  

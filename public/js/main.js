@@ -19,7 +19,6 @@ var mergeView = new CodeMirror.MergeView(document.getElementById('git-diff'), {
 	origRight: $('.theirs').html(),
 	highlightDifferences: hilight,
 	smartIndent: true,
-	title: 'Merging',
 	theme: 'solarized-dark',
 	mode: mode,
 	lineNumbers: true
