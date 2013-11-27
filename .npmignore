@@ -1,6 +1,5 @@
 # Ignore Dev Files
-public/js/*
-public/scss/*
+public/dev
 
 # Modules
 node_modules
