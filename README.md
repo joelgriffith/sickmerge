@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joelgriffith/sickmerge.png?branch=master)](https://travis-ci.org/joelgriffith/sickmerge)
+
 # sickmerge
 
 A command-line git conflict resolution tool. In the browser.
