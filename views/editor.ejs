@@ -8,10 +8,10 @@
 	</head>
 	<body>
 		<div class="hidden">
-			<p class="mode"><%= syntax %></p>
-			<p class="yours"><%- body.yours %></p>
-			<p class="both"><%- body.merge %></p>
-			<p class="theirs"><%- body.theirs %></p>
+			<pre class="mode"><%= syntax %></pre>
+			<pre class="yours-value"><%= body.yours %></pre>
+			<pre class="both-value"><%= body.merge %></pre>
+			<pre class="theirs-value"><%= body.theirs %></pre>
 		</div>
 		
 		<h1>Merging: <%= title %></h1>

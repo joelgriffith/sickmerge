@@ -14,9 +14,9 @@ var CodeMirrorMerge = require('code-mirror/addon/merge'),
  *	3-Way setup
  */
 var mergeView = new CodeMirror.MergeView(document.getElementById('git-diff'), {
-	value: $('.both').html(),
-	origLeft: $('.yours').html(),
-	origRight: $('.theirs').html(),
+	value: $('.both-value').text(),
+	origLeft: $('.yours-value').text(),
+	origRight: $('.theirs-value').text(),
 	highlightDifferences: hilight,
 	smartIndent: true,
 	theme: 'solarized-dark',
