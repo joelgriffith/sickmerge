@@ -50,6 +50,26 @@ h1 {
   }
 }
 
+/*
+ *  Layout
+ */
+.CodeMirror-merge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+.CodeMirror-merge .CodeMirror,
+.CodeMirror-merge-pane {
+  height: 100%;
+}
+.CodeMirror-merge-gap {
+    background-color: #002b36;
+    color: #839496;   
+}
+
 // Toolbar
 .toolbar {
   border-top: 1px solid #ddd;

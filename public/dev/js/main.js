@@ -5,7 +5,7 @@ var CodeMirrorMerge = require('code-mirror/addon/merge'),
 	CodeMirrorLoadMode = require('code-mirror/addon/mode/loadmode'),
 	CodeMirror = require('code-mirror'),
 	$ = require('jquery-browserify'),
-	mode = ($('.mode').html()) ? $('.mode').html() : null,
+	mode = ($('#syntax-mode').text()) ? $('#syntax-mode').text() : null,
 	syntaxLib = (mode) ? require('code-mirror/mode/' + mode + '.js') : '',
 	hilight = true;
 
@@ -14,9 +14,9 @@ var CodeMirrorMerge = require('code-mirror/addon/merge'),
  *	3-Way setup
  */
 var mergeView = new CodeMirror.MergeView(document.getElementById('git-diff'), {
-	value: $('.both-value').text(),
-	origLeft: $('.yours-value').text(),
-	origRight: $('.theirs-value').text(),
+	value: $('#both-value').text(),
+	origLeft: $('#yours-value').text(),
+	origRight: $('#theirs-value').text(),
 	highlightDifferences: hilight,
 	smartIndent: true,
 	theme: 'solarized-dark',
