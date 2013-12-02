@@ -12,7 +12,7 @@
  */
 var fs = require('fs'),
     program = require('commander'),
-    syntaxOptions = require('./lib/syntaxOptions'),
+    syntaxOptions = require('./lib/syntax'),
     version = require('./package.json').version,
     fileLocation;
 
@@ -111,5 +111,6 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     
     // Open the browser to the page    
     app.listen(port);
+    console.log('Sickmerge is waiting for changes.\nPressing "Save" or "Cancel" will do the action and close the sickmerge program.\nPress CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.');
     open('http://' + hostname + ':' + port);
 });
