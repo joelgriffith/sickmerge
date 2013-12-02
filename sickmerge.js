@@ -32,7 +32,7 @@ fileLocation = program.args[0];
 
 // For printing available syntax options
 function printSyntaxOptions () {
-    console.log('Available options include:\n' + syntaxOptions);
+    console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes.concat(', '));
     return;
 }
 
