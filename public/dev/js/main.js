@@ -13,6 +13,13 @@ var CodeMirrorMerge = require('code-mirror/addon/merge'),
 	bothText = document.getElementById('both-value').innerHTML,
 	codeMirrorEl = document.getElementById('git-diff'),
 
+	// Button DOM
+	saveBtn = document.getElementById('save-file'),
+	mergeYoursBtn = document.getElementById('merge-yours'),
+	mergeTheirsBtn = document.getElementById('merge-theirs'),
+	hideDiffBtn = document.getElementById('hide-diff'),
+	cancelBtn = document.getElementById('cancel'),
+
 	// Flags/Normalizing
 	mode = (syntax) ? syntax.innerHTML : null,
 	syntaxLib = (mode) ? require('code-mirror/mode/' + mode + '.js') : '',
@@ -36,46 +43,39 @@ var mergeView = new CodeMirror.MergeView(codeMirrorEl, {
 /*
  *	Button Functionality
  */
+saveBtn.onclick = function() {
+	var finalFile = { content: mergeView.edit.getValue() };
+	xhr({
+		url: '/save',
+		type: 'POST',
+		data: finalFile,
 
-// // On Save
-// $('[data-id="save-file"]').click(function() {
-// 	var finalFile = { content: mergeView.edit.getValue() };
+		// TODO: Abstract this out
+		done: function (err, response) {
+			if (err) {
+				alert(err);
+			} else {
+				window.close();
+			}
+		}
+	});	
+};
+mergeYoursBtn.onclick = function() {
+	mergeView.edit.setValue(mergeView.leftOriginal().doc.getValue());
+};
+mergeTheirsBtn.onclick = function() {
+	mergeView.edit.setValue(mergeView.rightOriginal().doc.getValue());
+};
+hideDiffBtn.onclick = function() {
+	mergeView.setShowDifferences(hilight = !hilight);	
+};
+cancelBtn.onclick = function() {
+	xhr({
+		url: '/cancel',
 
-// 	// Send the code over and close on complete
-// 	$.ajax({
-// 		url: '/save',
-// 		type: 'post',
-// 		data: finalFile,
-// 		dataType: 'json',
-// 		complete: function() {
-// 			window.close();
-// 		}
-// 	});
-// });
-
-// // Selecting Yours
-// $('[data-id="merge-yours"]').click(function() {
-// 	mergeView.edit.setValue(mergeView.leftOriginal().doc.getValue());
-// });
-
-// // Selecting Theirs
-// $('[data-id="merge-theirs"]').click(function() {
-// 	mergeView.edit.setValue(mergeView.rightOriginal().doc.getValue());
-// });
-
-// // Hiding Diff
-// $('[data-id="hide-diff"]').click(function() {
-// 	mergeView.setShowDifferences(hilight = !hilight);
-// });
-
-// // On Cancel
-// $('[data-id="cancel"]').click(function() {
-
-// 	// Send the kill signal and close
-// 	$.ajax({
-// 		url: '/cancel',
-// 		complete: function() {
-// 			window.close();
-// 		}
-// 	});
-// });
+		// TODO: Abstract this out
+		done: function () {
+			window.close();
+		}
+	});	
+};
