@@ -21,7 +21,7 @@ program
     .version(version)
     .usage('[options] <conflicted file location>')
     .option('-h, --hostname [value]', 'The host URL you wish to query in the browser (defaults to localhost).')
-    .option('-o, --syntax-options', 'Will show the available syntax options for syntax highlighting.')
+    .option('-o, --syntaxes', 'Will show the available syntax options for syntax highlighting.')
     .option('-p, --port <n>', 'The port you wish to deploy on (defaults to 3000).', parseInt)
     .option('-s, --syntax [value]', 'The language of the file for syntax highlighting (optional), defaults to no highlighting. Run with "-o" to see the available options.')
     .option('-m, --merge [value]', 'Specify the initial view in the middle (merged) window on instantiation. Valid options are "yours", "theirs", and "both". Defaults to "yours"')
@@ -32,12 +32,12 @@ fileLocation = program.args[0];
 
 // For printing available syntax options
 function printSyntaxOptions () {
-    console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes.concat(', '));
+    console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
     return;
 }
 
 // If the user wants to see the syntax options
-if (program['syntax-options']) {
+if (program.syntaxes) {
     printSyntaxOptions();
     return;
 }
@@ -69,12 +69,14 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     var hostname = (program.hostname) ? program.hostname : 'localhost',
         port = (program.port) ? program.port : 3000,
         merge = (program.merge) ? program.merge : 'yours',
-        syntax = (program.syntax) ? program.syntax : '',
+        extension = fileLocation.split('.').pop(),
+        syntax = (program.syntax) ? program.syntax : syntaxOptions.getSyntax(extension),
         resultArray = require('./lib/gitStrip')(result, merge),
         express = require('express'),
         app = express(),
         path = require('path'),
         open = require('open');   
+
 
     // Web server setup
     app.use(express.bodyParser());
