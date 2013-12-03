@@ -63,7 +63,6 @@ module.exports = function(grunt) {
       }
     },
     jasmine_node: {
-      specWatcher: './spec',
       projectRoot: '.',
       requirejs: false,
       forceExit: true
