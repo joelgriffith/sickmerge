@@ -1,6 +1,9 @@
 var exec = require('child_process').exec,
-    fs = require('fs');
+    fs = require('fs'),
     version = require('../package.json').version,
+    request = require('request'),
+
+    // Helper function to exectue the sickmerge cli
     execSickmerge = function(options, callback) {
         exec('sickmerge ' + options, function(err, stdout) {
             callback(stdout);
@@ -15,6 +18,7 @@ describe('Sickmerge', function() {
         });
     });
 
+    // Testing command line options (help/version/errors)
     describe('command line options', function() {
         it('should output help when no options are passed', function(done) {
             execSickmerge('', function(response) {
@@ -43,6 +47,17 @@ describe('Sickmerge', function() {
                 execSickmerge('--syntaxes', function(response) {
                     expect(response).toContain('Available options include:');
                     done();
+                });
+            });
+        });
+    });
+
+    describe('web application services', function() {
+        it('should deploy on localhost when no hostname is provided and respond properly', function(done) {
+            execSickmerge('', function() {
+                request('http://localhost:3000', function(error, response, body) {
+                   expect(response.statusCode).toEqual(200);
+                   done(); 
                 });
             });
         });

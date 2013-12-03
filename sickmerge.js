@@ -32,7 +32,7 @@ fileLocation = program.args[0];
 
 // For printing available syntax options
 function printSyntaxOptions () {
-    console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
+    process.stdout.write('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
     return;
 }
 
@@ -50,20 +50,20 @@ if (!fileLocation) {
 
 // Invalid merge option
 if (program.merge && ['yours', 'theirs', 'both'].indexOf(program.merge) === -1) {
-    console.log('You\'ve specified an invalid initial merged view: "' + program.merge + '".\nPlease use either "yours", "theirs", or "both"');
+    process.stdout.write('You\'ve specified an invalid initial merged view: "' + program.merge + '".\nPlease use either "yours", "theirs", or "both"');
     return;
 }
 
 // Invalid syntax option
 if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
-    console.log('You\'ve specified an invalid syntax option: ' + program.syntax);
+    process.stdout.write('You\'ve specified an invalid syntax option: ' + program.syntax);
     printSyntaxOptions();
     return;
 }
 
 // Read the passed file, strip the git comments, and build the web service
 fs.readFile(fileLocation, 'UTF-8', function(err, result) {
-    if (err) return console.log('There was an error loading your file! ' + err);
+    if (err) return process.stdout.write('There was an error loading your file! ' + err);
 
     // Setup parameters, load additional files
     var hostname = (program.hostname) ? program.hostname : 'localhost',
@@ -111,6 +111,6 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     
     // Open the browser to the page    
     app.listen(port);
-    console.log('Sickmerge is waiting for changes.\nPressing "Save" or "Cancel" will do the action and close the sickmerge program.\nPress CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.');
+    process.stdout.write('Sickmerge is waiting for changes.\nPressing "Save" or "Cancel" will do the action and close the sickmerge program.\nPress CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.');
     open('http://' + hostname + ':' + port);
 });
