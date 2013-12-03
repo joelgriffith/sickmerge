@@ -71,7 +71,7 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
         merge = (program.merge) ? program.merge : 'yours',
         extension = fileLocation.split('.').pop(),
         syntax = (program.syntax) ? program.syntax : syntaxOptions.getSyntax(extension),
-        resultArray = require('./lib/gitStrip')(result, merge),
+        threeWayMerge = require('./lib/gitStrip')(result, merge),
         express = require('express'),
         app = express(),
         path = require('path'),
@@ -89,7 +89,7 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
         res.render('editor', { 
             title: fileLocation, 
             syntax: syntax,
-            body: resultArray 
+            body: threeWayMerge 
         });
     });
 
