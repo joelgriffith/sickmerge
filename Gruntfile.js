@@ -61,10 +61,16 @@ module.exports = function(grunt) {
           '<%= build %>/js/main.js': ['<%= build %>/js/main.js']
         }
       }
+    },
+    jasmine_node: {
+      projectRoot: '.',
+      requirejs: false,
+      forceExit: true
     }
   });
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-jasmine-node');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -72,6 +78,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sass');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'webpack', 'uglify', 'sass']);
+  grunt.registerTask('default', ['jasmine_node', 'jshint', 'webpack', 'uglify', 'sass']);
 
 };
