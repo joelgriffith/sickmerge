@@ -111,6 +111,10 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     
     // Open the browser to the page    
     app.listen(port);
-    process.stdout.write('Sickmerge is waiting for changes.\nPressing "Save" or "Cancel" will do the action and close the sickmerge program.\nPress CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.');
+    process.stdout.write('Sickmerge is waiting for changes.\n' +
+        'Visit http://' + hostname + ':' + port + '/ in your browser to make changes\n' +
+        'Pressing "Save" or "Cancel" will do the action and close the sickmerge program.\n'+
+        'Press CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.'
+    );
     open('http://' + hostname + ':' + port);
 });

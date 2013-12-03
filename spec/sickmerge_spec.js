@@ -53,12 +53,11 @@ describe('Sickmerge', function() {
     });
 
     describe('web application services', function() {
-        it('should deploy on localhost when no hostname is provided and respond properly', function(done) {
-            execSickmerge('', function() {
-                request('http://localhost:3000', function(error, response, body) {
-                   expect(response.statusCode).toEqual(200);
-                   done(); 
-                });
+        it('should "open" on localhost when no hostname is provided', function(done) {
+            execSickmerge('spec/fixtures/javascript.js', function(response) {
+                console.log(response);
+                expect(response).toContain('http://localhost');
+                done();
             });
         });
     });
