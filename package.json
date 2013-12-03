@@ -55,5 +55,8 @@
   "preferGlobal": "true",
   "bin": {
     "sickmerge": "./sickmerge.js"
+  },
+  "scripts": {
+    "test": "grunt jasmine_node"
   }
 }
