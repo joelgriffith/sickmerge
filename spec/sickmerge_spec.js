@@ -6,6 +6,7 @@ var exec = require('child_process').exec,
     // Helper function to exectue the sickmerge cli
     execSickmerge = function(options, callback) {
         exec('sickmerge ' + options, function(err, stdout) {
+            console.log(stdout);
             callback(stdout);
         });
     };
