@@ -1,6 +1,6 @@
-var gitStrip = require('../../lib/gitStrip'),
+var gitStrip = require('../lib/gitStrip'),
     fs = require('fs'),
-    fixture = fs.readFileSync('./test/fixtures/javascript.js', 'UTF-8', function(err, result) {
+    fixture = fs.readFileSync('./spec/fixtures/javascript.js', 'UTF-8', function(err, result) {
         return result;
     });
 

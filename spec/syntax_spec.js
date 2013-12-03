@@ -1,4 +1,4 @@
-var syntax = require('../../lib/syntax'),
+var syntax = require('../lib/syntax'),
     hasDuplicates = function(array) {
         var valuesSoFar = {};
         for (var i = 0; i < array.length; ++i) {
