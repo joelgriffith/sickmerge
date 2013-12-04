@@ -67,6 +67,8 @@ if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
 fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     if (err) return console.log('There was an error loading your file! ' + err);
 
+    console.log('Able to read file!');
+
     // Setup parameters, load additional files
     var hostname = (program.hostname) ? program.hostname : 'localhost',
         port = (program.port) ? program.port : 3000,
