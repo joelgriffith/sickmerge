@@ -15,8 +15,7 @@ var fs = require('fs'),
     syntaxOptions = require('./lib/syntax'),
     version = require('./package.json').version,
     fileLocation,
-    Config = require('./lib/config'),
-    env = new Config();
+    env = require('./lib/config')();
 
 // Program Setup and Options
 program
