@@ -10,6 +10,9 @@ var exec = require('child_process').exec,
         });
     };
 
+// Set the test environment
+process.env.NODE_ENV = 'test';
+
 describe('Sickmerge', function() {
     it('should be present', function(done) {
         fs.readFile('./sickmerge.js', function(err) {

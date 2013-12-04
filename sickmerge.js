@@ -32,7 +32,7 @@ fileLocation = program.args[0];
 
 // For printing available syntax options
 function printSyntaxOptions () {
-    process.stdout.write('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
+    console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
     return;
 }
 
@@ -50,20 +50,20 @@ if (!fileLocation) {
 
 // Invalid merge option
 if (program.merge && ['yours', 'theirs', 'both'].indexOf(program.merge) === -1) {
-    process.stdout.write('You\'ve specified an invalid initial merged view: "' + program.merge + '".\nPlease use either "yours", "theirs", or "both"');
+    console.log('You\'ve specified an invalid initial merged view: "' + program.merge + '".\nPlease use either "yours", "theirs", or "both"');
     return;
 }
 
 // Invalid syntax option
 if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
-    process.stdout.write('You\'ve specified an invalid syntax option: ' + program.syntax);
+    console.log('You\'ve specified an invalid syntax option: ' + program.syntax);
     printSyntaxOptions();
     return;
 }
 
 // Read the passed file, strip the git comments, and build the web service
 fs.readFile(fileLocation, 'UTF-8', function(err, result) {
-    if (err) return process.stdout.write('There was an error loading your file! ' + err);
+    if (err) return console.log('There was an error loading your file! ' + err);
 
     // Setup parameters, load additional files
     var hostname = (program.hostname) ? program.hostname : 'localhost',
@@ -109,9 +109,9 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
         process.exit();
     });
     
-    // Open the browser to the page    
+    // Open the browser to the page if not in a test environment    
     app.listen(port);
-    process.stdout.write('Sickmerge is waiting for changes.\n' +
+    console.log('Sickmerge is waiting for changes.\n' +
         'Visit http://' + hostname + ':' + port + '/ in your browser to make changes\n' +
         'Pressing "Save" or "Cancel" will do the action and close the sickmerge program.\n'+
         'Press CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.'
