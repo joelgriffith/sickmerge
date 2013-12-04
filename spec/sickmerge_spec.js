@@ -62,9 +62,6 @@ describe('Sickmerge', function() {
                 done();
             });
         });
-    });
-
-    describe('web application services', function() {
         it('should respond when with a 200 when http requested', function(done) {
             execSickmerge('-m yours ./spec/fixtures/javascript.js', function() {
                 request('http://127.0.0.1:3000/', function(err, response) {
