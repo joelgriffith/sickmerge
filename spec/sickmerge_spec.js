@@ -10,6 +10,7 @@ var exec = require('child_process').exec,
 // Helper function to exectue the sickmerge cli
 function execSickmerge (options, callback) {
     exec('sickmerge ' + options, function(err, stdout) {
+        console.log(stdout);
         callback(stdout);
     });
 }
@@ -64,10 +65,12 @@ describe('Sickmerge', function() {
     });
 
     describe('web application services', function() {
-        it('should listen on localhost when no hostname is provided', function(done) {
-            execSickmerge('./spec/fixtures/javascript.js', function(response) {
-                expect(response).toContain('http://localhost:3000/');
-                done();
+        it('should respond when with a 200 when http requested', function(done) {
+            execSickmerge('./spec/fixtures/javascript.js', function() {
+                request('http://127.0.0.1:3000/', function(err, response) {
+                    expect(response.statusCode).toEqual(200);
+                    done();
+                });
             });
         });
     });
