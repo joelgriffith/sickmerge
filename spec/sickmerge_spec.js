@@ -10,6 +10,7 @@ var exec = require('child_process').exec,
 // Helper function to exectue the sickmerge cli
 function execSickmerge (options, callback) {
     exec('sickmerge ' + options, function(err, stdout) {
+        console.log(stdout);
         callback(stdout);
     });
 }
@@ -19,7 +20,6 @@ describe('Sickmerge', function() {
     it('should be present', function(done) {
         fs.readFile('./sickmerge.js', function(err, response) {
             expect(err).toBe(null);
-            console.log(response);
             done();
         });
     });

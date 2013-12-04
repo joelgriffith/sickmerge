@@ -31,6 +31,8 @@ program
 // Store the file location so we can persist later
 fileLocation = program.args[0];
 
+console.log(fileLocation);
+
 // For printing available syntax options
 function printSyntaxOptions () {
     console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
