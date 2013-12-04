@@ -1,18 +1,20 @@
-var exec = require('child_process').exec,
-    fs = require('fs'),
-    version = require('../package.json').version,
-    request = require('request'),
-
-    // Helper function to exectue the sickmerge cli
-    execSickmerge = function(options, callback) {
-        exec('sickmerge ' + options, function(err, stdout) {
-            callback(stdout);
-        });
-    };
-
 // Set the test environment
 process.env.NODE_ENV = 'test';
 
+// Dependencies
+var exec = require('child_process').exec,
+    fs = require('fs'),
+    version = require('../package.json').version,
+    request = require('request');
+
+// Helper function to exectue the sickmerge cli
+function execSickmerge (options, callback) {
+    exec('sickmerge ' + options, function(err, stdout) {
+        callback(stdout);
+    });
+}
+
+// Tests
 describe('Sickmerge', function() {
     it('should be present', function(done) {
         fs.readFile('./sickmerge.js', function(err) {
@@ -53,11 +55,17 @@ describe('Sickmerge', function() {
                 });
             });
         });
+        it('should print an error message when an invalid merge pattern is passed', function(done) {
+            execSickmerge('-m fake ./spec/fixtures/javascript.js', function(response) {
+                expect(response).toContain("You've specified an invalid initial merged view");
+                done();
+            });
+        });
     });
 
     describe('web application services', function() {
         it('should listen on localhost when no hostname is provided', function(done) {
-            execSickmerge('spec/fixtures/javascript.js', function(response) {
+            execSickmerge('./spec/fixtures/javascript.js', function(response) {
                 expect(response).toContain('http://localhost:3000/');
                 done();
             });

@@ -2,9 +2,6 @@
 public/dev
 Gruntfile.js
 
-# Tests
-test/
-
 # Modules
 node_modules
 
