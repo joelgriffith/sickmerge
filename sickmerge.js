@@ -63,7 +63,7 @@ if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
 }
 
 // Read the passed file, strip the git comments, and build the web service
-fs.readFile(fileLocation, {encoding: 'utf8'}, function(err, result) {
+fs.readFile(fileLocation, function(err, result) {
     if (err) return console.log('There was an error loading your file! ' + err);
 
     // Setup parameters, load additional files
@@ -72,7 +72,7 @@ fs.readFile(fileLocation, {encoding: 'utf8'}, function(err, result) {
         merge = (program.merge) ? program.merge : 'yours',
         extension = fileLocation.split('.').pop(),
         syntax = (program.syntax) ? program.syntax : syntaxOptions.getSyntax(extension),
-        threeWayMerge = require('./lib/gitStrip')(result, merge),
+        threeWayMerge = require('./lib/gitStrip')(result.toString(), merge),
         express = require('express'),
         app = express(),
         path = require('path'),

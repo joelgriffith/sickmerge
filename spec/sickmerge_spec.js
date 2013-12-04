@@ -17,8 +17,9 @@ function execSickmerge (options, callback) {
 // Tests
 describe('Sickmerge', function() {
     it('should be present', function(done) {
-        fs.readFile('./sickmerge.js', function(err) {
+        fs.readFile('./sickmerge.js', function(err, response) {
             expect(err).toBe(null);
+            console.log(response);
             done();
         });
     });
