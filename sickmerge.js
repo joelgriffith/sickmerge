@@ -116,5 +116,8 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
         'Pressing "Save" or "Cancel" will do the action and close the sickmerge program.\n'+
         'Press CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.'
     );
+
+    // If it's in the test environment, exit since it'll hang
+    if (process.env.NODE_ENV === 'test') return;
     open('http://' + hostname + ':' + port);
 });

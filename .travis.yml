@@ -5,4 +5,4 @@ before_script:
   - npm install -g grunt-cli
   - npm link
 script:
-    - "grunt --verbose"
+  - "grunt --verbose"

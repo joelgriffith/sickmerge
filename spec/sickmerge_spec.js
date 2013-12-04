@@ -57,11 +57,9 @@ describe('Sickmerge', function() {
 
     describe('web application services', function() {
         it('should listen on localhost when no hostname is provided', function(done) {
-            execSickmerge('spec/fixtures/javascript.js', function() {
-                request("http://localhost:3000/", function(error, response, body){
-                    expect(response.statusCode).toEqual(200);
-                    done();
-                });
+            execSickmerge('spec/fixtures/javascript.js', function(response) {
+                expect(response).toContain('http://localhost:3000/');
+                done();
             });
         });
     });
