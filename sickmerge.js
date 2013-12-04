@@ -118,5 +118,5 @@ fs.readFile(fileLocation, {encoding: 'utf8'}, function(err, result) {
         'Press CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.'
     );
     app.listen(port);
-    open('http://' + hostname + ':' + port);
+    if( env !== 'test') open('http://' + hostname + ':' + port);
 });
