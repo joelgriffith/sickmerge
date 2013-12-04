@@ -120,6 +120,6 @@ fs.readFile(fileLocation, 'UTF-8', function(err, result) {
     app.listen(port);        
 
     if (env === 'test') process.exit();
-    
+
     open('http://' + hostname + ':' + port);
 });
