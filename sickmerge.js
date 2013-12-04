@@ -31,8 +31,6 @@ program
 // Store the file location so we can persist later
 fileLocation = program.args[0];
 
-console.log(fileLocation);
-
 // For printing available syntax options
 function printSyntaxOptions () {
     console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
@@ -66,6 +64,8 @@ if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
 
 // Read the passed file, strip the git comments, and build the web service
 fs.readFile(fileLocation, function(err, result) {
+    console.log("File read: ", result);
+
     if (err) return console.log('There was an error loading your file! ' + err);
 
     // Setup parameters, load additional files

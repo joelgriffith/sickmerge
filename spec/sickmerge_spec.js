@@ -66,7 +66,7 @@ describe('Sickmerge', function() {
 
     describe('web application services', function() {
         it('should respond when with a 200 when http requested', function(done) {
-            execSickmerge('./spec/fixtures/javascript.js', function() {
+            execSickmerge('-m yours ./spec/fixtures/javascript.js', function() {
                 request('http://127.0.0.1:3000/', function(err, response) {
                     expect(response.statusCode).toEqual(200);
                     done();
