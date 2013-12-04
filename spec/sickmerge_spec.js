@@ -1,8 +1,6 @@
 // Set the test environment
 process.env.NODE_ENV = 'test';
 
-jasmine.getEnv().defaultTimeoutInterval = 50000;
-
 // Dependencies
 var exec = require('child_process').exec,
     fs = require('fs'),
@@ -12,7 +10,6 @@ var exec = require('child_process').exec,
 // Helper function to exectue the sickmerge cli
 function execSickmerge (options, callback) {
     exec('sickmerge ' + options, function(err, stdout) {
-        console.log(stdout);
         callback(stdout);
     });
 }
@@ -74,6 +71,6 @@ describe('Sickmerge', function() {
                     done();
                 });
             });
-        }, 20000);
+        });
     });
 });
