@@ -4,8 +4,7 @@ process.env.NODE_ENV = 'test';
 // Dependencies
 var exec = require('child_process').exec,
     fs = require('fs'),
-    version = require('../package.json').version,
-    request = require('request');
+    version = require('../package.json').version;
 
 // Helper function to exectue the sickmerge cli
 function execSickmerge (options, callback) {
