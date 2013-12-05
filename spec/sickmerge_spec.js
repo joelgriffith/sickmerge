@@ -62,13 +62,5 @@ describe('Sickmerge', function() {
                 done();
             });
         });
-        it('should respond when with a 200 when http requested', function(done) {
-            execSickmerge('-m yours ./spec/fixtures/javascript.js', function() {
-                request('http://127.0.0.1:3000/', function(err, response) {
-                    expect(response.statusCode).toEqual(200);
-                    done();
-                });
-            });
-        });
     });
 });
