@@ -63,7 +63,9 @@ if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
 }
 
 // Read the passed file, strip the git comments, and build the web service
-fs.readFile(fileLocation, function(err, result) {
+fs.readFile(fileLocation, startSickServer);
+
+function startSickServer(err, result) {
     if (err) return console.log('There was an error loading your file! ' + err);
 
     // Start the web-service with the params
@@ -74,5 +76,5 @@ fs.readFile(fileLocation, function(err, result) {
         merge: program.merge || 'yours',
         syntax: program.syntax || syntaxOptions.getSyntax(fileLocation.split('.').pop()),
         threeWayMerge: require('./lib/gitStrip')(result.toString(), this.merge),
-    });
-});
+    });    
+}
