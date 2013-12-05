@@ -14,8 +14,8 @@ var fs = require('fs'),
     program = require('commander'),
     syntaxOptions = require('./lib/syntax'),
     version = require('./package.json').version,
-    fileLocation,
-    env = require('./lib/config')();
+    sickserver = require('./server/sickserver'),
+    fileLocation;
 
 // Program Setup and Options
 program
@@ -64,60 +64,15 @@ if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
 
 // Read the passed file, strip the git comments, and build the web service
 fs.readFile(fileLocation, function(err, result) {
-    console.log("File read: ", result);
-
     if (err) return console.log('There was an error loading your file! ' + err);
 
-    // Setup parameters, load additional files
-    var hostname = (program.hostname) ? program.hostname : 'localhost',
-        port = (program.port) ? program.port : 3000,
-        merge = (program.merge) ? program.merge : 'yours',
-        extension = fileLocation.split('.').pop(),
-        syntax = (program.syntax) ? program.syntax : syntaxOptions.getSyntax(extension),
-        threeWayMerge = require('./lib/gitStrip')(result.toString(), merge),
-        express = require('express'),
-        app = express(),
-        path = require('path'),
-        open = require('open');   
-
-
-    // Web server setup
-    app.use(express.bodyParser());
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'ejs');
-    app.use(express.static(path.join(__dirname, 'public')));
-
-    // Build the base route for the page
-    app.get('/', function (req, res) {
-        res.render('editor', { 
-            title: fileLocation, 
-            syntax: syntax,
-            body: threeWayMerge 
-        });
+    // Start the web-service with the params
+    sickserver({
+        location: fileLocation,
+        hostname: program.hostname,
+        port: program.port,
+        merge: program.merge || 'yours',
+        syntax: program.syntax || syntaxOptions.getSyntax(fileLocation.split('.').pop()),
+        threeWayMerge: require('./lib/gitStrip')(result.toString(), this.merge),
     });
-
-    // Post route for saving the file (this is final) and closes the process
-    app.post('/save', function (req, res) {
-        var content = req.body.content;
-        fs.writeFile(fileLocation, content, function (err) {
-            if (err) throw "There was an issues saving your file: " + err;
-            res.send('complete');
-            process.exit();
-        });
-    });
-
-    // Get route for cancelling the file (this is final) and closes the process
-    app.get('/cancel', function (req, res) {
-        res.send('terminated');
-        process.exit();
-    });
-
-    console.log(
-        'Sickmerge is waiting for changes.\n' +
-        'Visit http://' + hostname + ':' + port + '/ in your browser to make changes\n' +
-        'Pressing "Save" or "Cancel" will do the action and close the sickmerge program.\n'+
-        'Press CTRL+C if you\'ve closed your web browser and didn\'t click either of those buttons.'
-    );
-    app.listen(port);
-    if( env !== 'test') open('http://' + hostname + ':' + port);
 });

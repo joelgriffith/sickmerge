@@ -6,8 +6,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Configs
     pkg: grunt.file.readJSON('package.json'),
-    dev: './public/dev',
-    build: './public/build',
+    dev: './server/public/dev',
+    build: './server/public/build',
     jshint: {
       options: {
         jshintrc: '.jshintrc'
