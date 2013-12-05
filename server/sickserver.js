@@ -7,10 +7,10 @@ var env = require('../lib/config')(),
 
 module.exports = function(config) {
     var hostname = config.hostname || 'localhost',
-        fileLocation = config.location,
+        fileLocation = config.location || null,
         port = config.port || 3000,
         syntax = config.syntax || '',
-        threeWayMerge = config.threeWayMerge;
+        threeWayMerge = config.threeWayMerge || null;
 
     // Web server setup
     app.use(express.bodyParser());
