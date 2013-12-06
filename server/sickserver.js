@@ -1,4 +1,13 @@
+/*
+ *  Sick Server
+ *
+ *  Module for handling the web-server portion of sickmerge.
+ *  This module is an AMD-ish style object so we can store
+ *  some private variables and what not.
+ */
 module.exports = (function() {
+
+    // Local/private vars
     var env = require('../lib/config')(),
         express = require('express'),
         app = express(),
@@ -8,6 +17,15 @@ module.exports = (function() {
         hostname, fileLocation, port, syntax, threeWayMerge, server;
 
     return {
+
+        /*
+         *  Init
+         *
+         *  Set's up the private variables with defaults if none are passed
+         *
+         *  @param config {object} Server options object
+         *  @return this {object} Return this keyword to chain
+         */
         init: function(config) {
             hostname = config.hostname || 'localhost';
             fileLocation = config.location || null;
@@ -17,6 +35,16 @@ module.exports = (function() {
 
             return this;
         },
+
+        /*
+         *  Start Server
+         *
+         *  Method to start the http server, assumes you've already 
+         *  ran config beforehand (will throw an error otherwise)
+         *
+         *  @param {none}
+         *  @return {none}
+         */
         startServer : function() {
             // Web server setup
             app.use(express.bodyParser());
@@ -35,6 +63,16 @@ module.exports = (function() {
             server = app.listen(port);
             if( env !== 'test') open('http://' + hostname + ':' + port);
         },
+
+        /*
+         *  Build Routes
+         *
+         *  Abstraction for building the web server routes. Might move into
+         *  it's own file at somepoint.
+         *
+         *  @param {none}
+         *  @return {none}
+         */
         buildRoutes: function() {
 
             // Build the base route for the page
@@ -63,6 +101,15 @@ module.exports = (function() {
             });
 
         },
+
+        /*
+         *  Close Server
+         *
+         *  Abstraction for closing the webserver and terminating the process.
+         *
+         *  @param {none}
+         *  @return {none}
+         */
         closeServer: function() {
             server.close();
             if( env !== 'test') process.exit();

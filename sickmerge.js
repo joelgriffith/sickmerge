@@ -31,12 +31,6 @@ program
 // Store the file location so we can persist later
 fileLocation = program.args[0];
 
-// For printing available syntax options
-function printSyntaxOptions () {
-    console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
-    return;
-}
-
 // If the user wants to see the syntax options
 if (program.syntaxes) {
     printSyntaxOptions();
@@ -65,6 +59,17 @@ if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
 // Read the passed file, strip the git comments, and build the web service
 fs.readFile(fileLocation, startSickServer);
 
+/* 
+ *  Library code and helpers.
+ */
+
+// For printing available syntax options
+function printSyntaxOptions () {
+    console.log('Available options include:\n' + syntaxOptions.showSupportedSyntaxes());
+    return;
+}
+
+// Helper function for creating the webservice
 function startSickServer(err, result) {
     if (err) return console.log('There was an error loading your file! ' + err);
 

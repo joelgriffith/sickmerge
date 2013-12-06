@@ -21,7 +21,7 @@ describe('Sickservice', function() {
         done();
     });
 
-    describe('web server', function() {
+    describe('web server requests', function() {
         beforeEach(function() {
             sickservice.init(fixture).startServer();
         });
