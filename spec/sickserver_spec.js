@@ -50,13 +50,16 @@ describe('Sickservice', function() {
 
     describe('routes', function() {
         beforeEach(function() {
+            spyOn(sickservice, 'closeServer').andCallThrough();
             sickservice.init(fixture).startServer();
         });
-        afterEach(function() {
-            sickservice.closeServer();
+        it('should close the process when /cancel URL is queried', function(done) {
+            request('http://127.0.0.1:1337/cancel', function() {
+                expect(sickservice.closeServer).toHaveBeenCalled();
+                done();
+            });                
         });
         it('should close the process when /cancel URL is queried', function(done) {
-            spyOn(sickservice, 'closeServer');
             request('http://127.0.0.1:1337/cancel', function() {
                 expect(sickservice.closeServer).toHaveBeenCalled();
                 done();
