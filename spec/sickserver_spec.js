@@ -40,5 +40,11 @@ describe('Sickservice', function() {
                 done();
             });
         });
+        it('should have serve the client css', function(done) {
+            request('http://127.0.0.1:1337/build/css/main.css', function(err, result) {
+                expect(result.statusCode).toEqual(200);
+                done();
+            });
+        });
     });
 });
