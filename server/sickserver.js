@@ -90,7 +90,7 @@ module.exports = (function() {
             app.post('/save', function (req, res) {
                 var content = req.body.content;
                 fs.writeFile(fileLocation, content, function (err) {
-                    if (err) throw "There was an issues saving your file: " + err;
+                    if (err) throw "There was an issue saving your file: " + err;
                     res.send('complete');
                     me.closeServer();
                 });

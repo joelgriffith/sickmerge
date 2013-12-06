@@ -6,6 +6,7 @@ var sickservice = require('../server/sickserver'),
         hostname: 'localhost',
         port: 1337,
         syntax: '',
+        location: './spec/fixtures/javascript.js',
         threeWayMerge : {
             localTitle: 'local',
             incomingTitle: 'Incoming',
@@ -59,8 +60,8 @@ describe('Sickservice', function() {
                 done();
             });                
         });
-        it('should close the process when /cancel URL is queried', function(done) {
-            request('http://127.0.0.1:1337/cancel', function() {
+        it('should close the process when /save URL is queried', function(done) {
+            request.post('http://127.0.0.1:1337/save', {}, function() {
                 expect(sickservice.closeServer).toHaveBeenCalled();
                 done();
             });                
