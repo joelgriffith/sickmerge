@@ -68,13 +68,15 @@ fs.readFile(fileLocation, startSickServer);
 function startSickServer(err, result) {
     if (err) return console.log('There was an error loading your file! ' + err);
 
-    // Start the web-service with the params
-    sickserver({
+    var params = {
         location: fileLocation,
         hostname: program.hostname,
         port: program.port,
         merge: program.merge || 'yours',
         syntax: program.syntax || syntaxOptions.getSyntax(fileLocation.split('.').pop()),
-        threeWayMerge: require('./lib/gitStrip')(result.toString(), this.merge),
-    });    
+        threeWayMerge: require('./lib/gitStrip')(result.toString(), this.merge)
+    };
+
+    // Start the web-service with the params
+    sickserver.init(params).startServer();    
 }
