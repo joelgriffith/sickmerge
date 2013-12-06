@@ -54,17 +54,22 @@ describe('Sickservice', function() {
             spyOn(sickservice, 'closeServer').andCallThrough();
             sickservice.init(fixture).startServer();
         });
-        it('should close the process when /cancel URL is queried', function(done) {
-            request('http://127.0.0.1:1337/cancel', function() {
-                expect(sickservice.closeServer).toHaveBeenCalled();
-                done();
-            });                
+        describe('the cancel route', function() {
+            it('should close the process when /cancel URL is queried', function(done) {
+                request('http://127.0.0.1:1337/cancel', function() {
+                    expect(sickservice.closeServer).toHaveBeenCalled();
+                    done();
+                });                
+            });
         });
-        it('should close the process when /save URL is queried', function(done) {
-            request.post('http://127.0.0.1:1337/save', {}, function() {
-                expect(sickservice.closeServer).toHaveBeenCalled();
-                done();
-            });                
+        describe('the save route', function() {
+            it('should close the process when /save URL is queried', function(done) {
+                request.post('http://127.0.0.1:1337/save', {}, function() {
+                    expect(sickservice.closeServer).toHaveBeenCalled();
+                    done();
+                });
+            });
+            
         });
     });
 
