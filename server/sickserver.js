@@ -27,11 +27,12 @@ module.exports = (function() {
          *  @return this {object} Return this keyword to chain
          */
         init: function(config) {
+            config = config || {};
             hostname = config.hostname || 'localhost';
-            fileLocation = config.location || null;
+            fileLocation = config.location || '';
             port = config.port || 3000;
             syntax = config.syntax || '';
-            threeWayMerge = config.threeWayMerge || null;
+            threeWayMerge = config.threeWayMerge || '';
 
             return this;
         },
@@ -74,6 +75,7 @@ module.exports = (function() {
          *  @return {none}
          */
         buildRoutes: function() {
+            var me = this;
 
             // Build the base route for the page
             app.get('/', function (req, res) {
@@ -90,16 +92,15 @@ module.exports = (function() {
                 fs.writeFile(fileLocation, content, function (err) {
                     if (err) throw "There was an issues saving your file: " + err;
                     res.send('complete');
-                    this.closeServer();
+                    me.closeServer();
                 });
             });
 
             // Get route for cancelling the file (this is final) and closes the process
             app.get('/cancel', function (req, res) {
                 res.send('terminated');
-                this.closeServer();
+                me.closeServer();
             });
-
         },
 
         /*
@@ -112,7 +113,7 @@ module.exports = (function() {
          */
         closeServer: function() {
             server.close();
-            if( env !== 'test') process.exit();
+            if (env !== 'test') process.exit();
         }
     };
 })();

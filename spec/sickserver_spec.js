@@ -21,7 +21,7 @@ describe('Sickservice', function() {
         done();
     });
 
-    describe('web server requests', function() {
+    describe('web server', function() {
         beforeEach(function() {
             sickservice.init(fixture).startServer();
         });
@@ -42,6 +42,32 @@ describe('Sickservice', function() {
         });
         it('should have serve the client css', function(done) {
             request('http://127.0.0.1:1337/build/css/main.css', function(err, result) {
+                expect(result.statusCode).toEqual(200);
+                done();
+            });
+        });
+    });
+
+    describe('routes', function() {
+        beforeEach(function() {
+            sickservice.init(fixture).startServer();
+        });
+        afterEach(function() {
+            sickservice.closeServer();
+        });
+        it('should close the process when /cancel URL is queried', function(done) {
+            spyOn(sickservice, 'closeServer');
+            request('http://127.0.0.1:1337/cancel', function() {
+                expect(sickservice.closeServer).toHaveBeenCalled();
+                done();
+            });                
+        });
+    });
+
+    describe('error handling', function() {
+        it('shouldn\'t error when no config object is passed to it', function(done) {
+            sickservice.init().startServer();
+            request('http://127.0.0.1:3000', function(err, result) {
                 expect(result.statusCode).toEqual(200);
                 done();
             });
