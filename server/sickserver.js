@@ -88,7 +88,7 @@ module.exports = (function() {
 
             // Post route for saving the file (this is final) and closes the process
             app.post('/save', function (req, res) {
-                var content = req.body.content;
+                var content = req.body.content || null;
                 fs.writeFile(fileLocation, content, function (err) {
                     if (err) throw "There was an issue saving your file: " + err;
                     res.send('complete');

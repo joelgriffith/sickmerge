@@ -2,11 +2,12 @@ process.env.NODE_ENV = 'test';
 
 var sickservice = require('../server/sickserver'),
     request = require('request'),
+    fs = require('fs'),
     fixture = {
         hostname: 'localhost',
         port: 1337,
         syntax: '',
-        location: './spec/fixtures/javascript.js',
+        location: 'spec/fixtures/save_endpoint',
         threeWayMerge : {
             localTitle: 'local',
             incomingTitle: 'Incoming',
@@ -69,7 +70,14 @@ describe('Sickservice', function() {
                     done();
                 });
             });
-            
+            it('should persist the merged results to disk', function(done) {
+                request.post('http://127.0.0.1:1337/save', { content: 'this text' }, function() {
+                    fs.readFile(fixture.location, function(err, result) {
+                        expect(result.toString()).toBe('this text');
+                        done();
+                    });
+                });
+            });            
         });
     });
 
