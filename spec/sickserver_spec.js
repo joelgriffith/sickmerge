@@ -60,7 +60,7 @@ describe('Sickservice', function() {
                 request('http://127.0.0.1:1337/cancel', function() {
                     expect(sickservice.closeServer).toHaveBeenCalled();
                     done();
-                });                
+                });
             });
         });
         describe('the save route', function() {
@@ -70,14 +70,6 @@ describe('Sickservice', function() {
                     done();
                 });
             });
-            it('should persist the merged results to disk', function(done) {
-                request.post('http://127.0.0.1:1337/save', { content: 'this text' }, function() {
-                    fs.readFile(fixture.location, function(err, result) {
-                        expect(result.toString()).toBe('this text');
-                        done();
-                    });
-                });
-            });            
         });
     });
 
