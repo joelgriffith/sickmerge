@@ -13,7 +13,7 @@ sickmerge [options] <conflicted-file>
 ```
 
 ## How It Works
-Sickmerge functions very similarly to a standard Node express application. After passing it your conflicted file, sickmerge will then build a 3-way merge window and start a small web service to deploy to. After you've made your changes (or hitting cancel), sickmerge will persist to contents to the original file and close the program. 
+Sickmerge functions very similarly to a standard Node express application. After passing it your conflicted file, sickmerge will then build a 3-way merge window and start a small web service to deploy to. After you've made your changes (or hitting cancel), sickmerge will persist to contents to the original file and close the program.
 
 You can then go about your normal git workflow and commit the resolved changes.
 
@@ -58,8 +58,30 @@ A big thanks to the numerous libraries that this sits on. In no particular order
 In lieu of a formal styleguide, take care to maintain the existing coding style. Be sure to lint your code and make sure it handles some edge-cases. In the near future, unit tests will be mandatory.
 
 ### Release History
+v0.0.3 - Unit tests and code cleanup/bugfixes.
+
 v0.0.1 - Initial release
 
 ### License
-Copyright (c) 2013 joelgriffith  
-Licensed under the MIT license.
+Copyright (c) 2013 jgriffith
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
