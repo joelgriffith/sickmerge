@@ -1,5 +1,5 @@
 # Ignore Dev Files
-public/dev
+server/public/dev
 Gruntfile.js
 
 # Modules
