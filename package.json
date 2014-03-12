@@ -57,6 +57,7 @@
     "sickmerge": "./sickmerge.js"
   },
   "scripts": {
-    "test": "grunt jasmine_node"
+    "test": "grunt jasmine_node",
+    "install": "grunt"
   }
 }
