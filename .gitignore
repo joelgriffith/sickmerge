@@ -1,5 +1,6 @@
 # Ignore built code
 public/build/*
+spec/fixtures/save_endpoint
 
 # Node Modules
 node_modules

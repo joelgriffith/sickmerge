@@ -2,7 +2,6 @@ process.env.NODE_ENV = 'test';
 
 var sickservice = require('../server/sickserver'),
     request = require('request'),
-    fs = require('fs'),
     fixture = {
         hostname: 'localhost',
         port: 1337,
