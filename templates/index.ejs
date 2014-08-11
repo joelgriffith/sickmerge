@@ -2,18 +2,11 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Merging: <%= title %></title>
-		<link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+		<title>Sickmerge</title>
 		<link rel="stylesheet" href="/build/css/main.css">
 	</head>
 	<body>
-		<div class="hidden">
-			<pre id="syntax-mode"><%= syntax %></pre>
-			<pre id="yours-value"><%= body.yours %></pre>
-			<pre id="both-value"><%= body.merge %></pre>
-			<pre id="theirs-value"><%= body.theirs %></pre>
-		</div>
-		
+
 		<h1>Merging: <%= title %></h1>
 		<div class="titles">
 			<h3>Local</h3>
@@ -21,7 +14,7 @@
 			<h3>Incoming</h3>
 		</div>
 		<div id="git-diff" spellcheck="false"></div>
-		
+
 		<div class="toolbar">
 			<button class="cancel" id="cancel">Cancel</button>
 			<button class="hide-diff" id="hide-diff">Toggle Differences</button>

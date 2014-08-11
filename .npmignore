@@ -1,6 +1,6 @@
 # Ignore Dev Files
 server/public/dev
-Gruntfile.js
+Gulpfile.js
 
 # Modules
 node_modules

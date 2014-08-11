@@ -12,9 +12,9 @@
  */
 var fs = require('fs'),
     program = require('commander'),
-    syntaxOptions = require('./lib/syntax'),
+    syntaxOptions = require('./lib/FileTypeMap'),
     version = require('./package.json').version,
-    sickserver = require('./server/sickserver'),
+    sickserver = require('./lib/Server'),
     fileLocation;
 
 // Program Setup and Options
@@ -59,7 +59,7 @@ if (program.syntax && syntaxOptions.indexOf(program.syntax) === -1) {
 // Read the passed file, strip the git comments, and build the web service
 fs.readFile(fileLocation, startSickServer);
 
-/* 
+/*
  *  Library code and helpers.
  */
 
@@ -83,5 +83,5 @@ function startSickServer(err, result) {
     };
 
     // Start the web-service with the params
-    sickserver.init(params).startServer();    
+    sickserver.init(params).startServer();
 }
