@@ -14,6 +14,9 @@
     "gulp-imagemin": "^1.0.0",
     "gulp-webpack": "^0.3.0",
     "gulp-sass": "^0.7.3",
-    "es6-loader": "^0.2.0"
+    "es6-loader": "^0.2.0",
+    "mocha": "^1.21.4",
+    "gulp-karma": "0.0.4",
+    "karma": "^0.12.22"
   }
 }
