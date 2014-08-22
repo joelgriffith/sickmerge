@@ -9,6 +9,7 @@ var imagemin = require('gulp-imagemin');
 var clean = require('gulp-clean');
 var webpack = require('gulp-webpack');
 var gulpConfig = require('./gulp.config');
+var mocha = require('gulp-mocha');
 
 // Tasks
 gulp.task('default', ['hint', 'scripts', 'styles', 'images', 'html']);
@@ -64,6 +65,15 @@ gulp.task('clean', function() {
 			read: false
 		})
 		.pipe(clean());
+});
+
+gulp.task('test', function() {
+	return gulp.src('**/*.mspec.js', {read: false})
+		.pipe(mocha({reporter: 'nyan'}));
+});
+
+gulp.task('ci', function() {
+	gulp.watch('**/*.mspec.js', ['test']);
 });
 
 gulp.task('watch', ['default'], function() {

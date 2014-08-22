@@ -22,6 +22,10 @@
         "require": false,
         "define": false,
         "$": false,
+        "describe": false,
+        "it": false,
+        "beforeEach": false,
+        "afterEach": false,
         "jquery": false
     }
 }

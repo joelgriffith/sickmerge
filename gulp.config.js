@@ -7,8 +7,8 @@ module.exports = {
 	build: Date.now(),
 	scripts: {
 		paths: {
-			all: './src/js/**/*.js',
-			entry: './src/js/index.js',
+			all: './public/js/**/*.js',
+			entry: './public/js/index.js',
 			output: {
 				dev: './build/dev/js',
 				prod: './build/prod/js'
@@ -17,8 +17,8 @@ module.exports = {
 	},
 	styles: {
 		paths: {
-			all: './src/scss/**/*.scss',
-			entry: './src/scss/index.scss',
+			all: './public/scss/**/*.scss',
+			entry: './public/scss/index.scss',
 			output: {
 				dev: './build/dev/css/',
 				prod: './build/prod/css/'
@@ -28,7 +28,7 @@ module.exports = {
 	},
 	html: {
 		paths: {
-			entry: './src/index.html',
+			entry: './public/index.html',
 			output: {
 				dev: './build/dev/',
 				prod: './build/prod/'
@@ -37,7 +37,7 @@ module.exports = {
 	},
 	images: {
 		paths: {
-			all: ['./src/images/*', './src/images/**/*.jpg', './src/images/**/*.jpeg', './src/images/**/*.gif'],
+			all: ['./public/images/*', './public/images/**/*.jpg', './public/images/**/*.jpeg', './public/images/**/*.gif'],
 			output: {
 				dev: './build/dev/images/',
 				prod: './build/prod/images/'
