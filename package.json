@@ -1,60 +1,19 @@
 {
-  "name": "sickmerge",
-  "description": "A 3-way git merge tool. In the browser.",
-  "version": "0.0.5",
-  "keywords": [
-    "sickmerge",
-    "git",
-    "merge",
-    "conflict",
-    "command-line",
-    "3-way",
-    "resolution"
-  ],
-  "homepage": "https://github.com/joelgriffith/sickmerge",
-  "author": {
-    "name": "jgriffith",
-    "email": "joel@joelgriffith.net",
-    "url": "joelgriffith.net"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/joelgriffith/sickmerge.git"
-  },
-  "bugs": {
-    "url": "https://github.com/joelgriffith/sickmerge/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/joelgriffith/sickmerge/blob/master/LICENSE-MIT"
-    }
-  ],
-  "main": "sickmerge",
-  "engines": {
-    "node": ">= 0.10"
-  },
-  "dependencies": {
-    "express": "^3.3.8",
-    "ejs": "^0.8.8",
-    "commander": "^2.0.0"
-  },
+  "name": "SinglePageApplication",
+  "author": "Joel Griffith",
+  "version": "0.1.0",
   "devDependencies": {
-    "brace": "^0.3.0",
-    "ejs": "^0.8.8",
-    "commander": "^2.3.0",
-    "express": "^3.16.4",
+    "gulp-jshint": "^1.8.4",
     "gulp-clean": "^0.3.1",
+    "gulp-minify-css": "^0.3.7",
+    "gulp-autoprefixer": "0.0.8",
+    "gulp-uglify": "^0.3.1",
     "gulp": "^3.8.7",
+    "jshint": "^2.5.4",
+    "gulp-connect": "^2.0.6",
+    "gulp-imagemin": "^1.0.0",
     "gulp-webpack": "^0.3.0",
-    "gulp-sass": "^0.7.2",
-    "ws": "^0.4.32"
-  },
-  "preferGlobal": "true",
-  "bin": {
-    "sickmerge": "./index.js"
-  },
-  "scripts": {
-    "test": "gulp test"
+    "gulp-sass": "^0.7.3",
+    "es6-loader": "^0.2.0"
   }
 }

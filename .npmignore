@@ -1,6 +1,7 @@
 # Ignore Dev Files
-server/public/dev
-Gulpfile.js
+public/
+gulpfile.js
+gulp.config.js
 
 # Modules
 node_modules
