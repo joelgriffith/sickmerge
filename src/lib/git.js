@@ -14,6 +14,7 @@ function _getConflicted(cb) {
 function _getFile(fileLocation) {
 	return fs.readFileSync(fileLocation, 'utf8');
 }
+
 function _stripFile(file, reg) {
 	return file.replace(reg, '');
 }

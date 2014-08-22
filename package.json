@@ -1,7 +1,17 @@
 {
-  "name": "SinglePageApplication",
+  "name": "sickmerge",
+  "description": "A browser-based conflict-resolution tool for git.",
   "author": "Joel Griffith",
   "version": "0.1.0",
+  "keywords": [
+    "sickmerge",
+    "git",
+    "merge",
+    "conflict",
+    "command-line",
+    "code-mirror",
+    "resolution"
+  ],
   "devDependencies": {
     "chai": "^1.9.1",
     "concat-stream": "^1.4.6",
@@ -23,5 +33,23 @@
     "mocha": "^1.21.4",
     "rewire": "^2.1.0",
     "sinon": "^1.10.3"
+  },
+  "bugs": {
+    "url": "https://github.com/joelgriffith/sickmerge/issues"
+  },
+  "dependencies": {
+    "commander": "^2.3.0"
+  },
+  "homepage": "https://github.com/joelgriffith/sickmerge",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joelgriffith/sickmerge.git"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "sickmerge": "./index.js"
+  },
+  "scripts": {
+    "test": "gulp test"
   }
 }
