@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+
 /*
  * sickmerge
  * https://github.com/jgriffith/sickmerge
@@ -7,10 +8,11 @@
  * Licensed under the MIT license.
  */
 
-var fs = require('fs'),
-    program = require('commander'),
-    version = require('./package.json').version,
-    git = require('./src/lib/git');
+var fs = require('fs');
+var _ = require('lodash');
+var program = require('commander');
+var version = require('./package.json').version;
+var git = require('./src/git');
 
 program
     .version(version)
@@ -33,6 +35,19 @@ if (program.help) {
     return;
 }
 
-git.getConflicted(function(data) {
-	console.log(data);
-});
+function setupServer(conflictedFiles) {
+    var filesArray = [];
+    _.each(conflictedFiles.split('\n'), function(file, i) {
+        fs.readFileSync(file, 'utf8', function(err, results) {
+            if (err) throw new Error('There was a problem reading: ' + file);
+            filesArray.push({
+                id: i,
+                theirs: git.getTheirs(results),
+                mine: git.getMine(results),
+                planin: git.getPlain(results)
+            });
+        });
+    });
+}
+
+git.getConflicted(setupServer);

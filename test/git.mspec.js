@@ -1,6 +1,6 @@
 var rewire = require('rewire');
 var assert = require('chai').assert;
-var git = rewire('../src/lib/git');
+var git = rewire('../src/git');
 var sinon = require('sinon');
 
 describe('Git', function() {
