@@ -8,7 +8,6 @@
  * Licensed under the MIT license.
  */
 
-var fs = require('fs');
 var _ = require('lodash');
 var program = require('commander');
 var version = require('./package.json').version;
@@ -30,24 +29,17 @@ if (program.merge && ['yours', 'theirs', 'both'].indexOf(program.merge) === -1) 
     return;
 }
 
-if (program.help) {
-    program.outputHelp();
-    return;
-}
-
 function setupServer(conflictedFiles) {
     var filesArray = [];
     _.each(conflictedFiles.split('\n'), function(file, i) {
-        fs.readFileSync(file, 'utf8', function(err, results) {
-            if (err) throw new Error('There was a problem reading: ' + file);
-            filesArray.push({
-                id: i,
-                theirs: git.getTheirs(results),
-                mine: git.getMine(results),
-                planin: git.getPlain(results)
-            });
+        filesArray.push({
+            id: i,
+            theirs: git.getTheirs(file),
+            mine: git.getMine(file),
+            planin: git.getPlain(file)
         });
     });
 }
 
-git.getConflicted(setupServer);
+if (program.file) setupServer(program.file);
+else git.getConflicted(setupServer);
