@@ -2,3 +2,11 @@
  *	Import all of your SCSS files here
  */
 @import '_reset';
+
+#javascript-editor {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 66%;
+}

@@ -26,6 +26,7 @@
         "it": false,
         "beforeEach": false,
         "afterEach": false,
-        "jquery": false
+        "jquery": false,
+        "ace": true
     }
 }

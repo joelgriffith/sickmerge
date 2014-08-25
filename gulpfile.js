@@ -8,7 +8,7 @@ var jshint = require('gulp-jshint');
 var imagemin = require('gulp-imagemin');
 var clean = require('gulp-clean');
 var webpack = require('gulp-webpack');
-var gulpConfig = require('./gulp.config');
+var gulpConfig = require('./gulp.conf');
 var mocha = require('gulp-mocha');
 
 // Tasks
