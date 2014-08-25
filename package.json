@@ -38,6 +38,7 @@
     "url": "https://github.com/joelgriffith/sickmerge/issues"
   },
   "dependencies": {
+    "brace": "^0.3.0",
     "commander": "^2.3.0",
     "express": "^4.8.5",
     "lodash": "^2.4.1"
