@@ -1,18 +1,18 @@
 var express = require('express');
 var app = express();
-var _ = require('lodash');
+var _= require('lodash');
 var fs = require('fs');
 var files = [];
 
-function _start(port) {
+function start(port) {
 	if (files.length === 0) throw new Error('Router started before #setFiles was called');
 
-	_startRoutes();
+	startRoutes();
 	app.use(express.static(__dirname + '../public'));
 	app.listen(port);
 }
 
-function _startRoutes() {
+function startRoutes() {
 	app.route('/files')
 		.get(function(req, res) {
 			res.send(files);
@@ -26,11 +26,11 @@ function _startRoutes() {
 		});
 }
 
-function _setFiles(filesArray) {
+function setFiles(filesArray) {
 	files = filesArray;
 }
 
 module.exports = {
-	start: _start,
-	setFiles: _setFiles
+	start: start,
+	setFiles: setFiles
 };

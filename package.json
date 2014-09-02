@@ -30,6 +30,7 @@
     "gulp-webpack": "^0.3.0",
     "jshint": "^2.5.4",
     "karma": "^0.12.22",
+    "localtunnel": "^1.3.0",
     "mocha": "^1.21.4",
     "rewire": "^2.1.0",
     "sinon": "^1.10.3"

@@ -3,6 +3,13 @@
  *	Require all your scripts here and init them!
  *	You should be using the ES6 Import/Export syntax!
  */
-var editor = ace.edit('javascript-editor');
-editor.getSession().setMode('ace/mode/javascript');
-editor.setTheme('ace/theme/monokai');
+import Editor from 'editor';
+
+var leftPane = new Editor({
+	id: 'javascript-editor',
+	content: 'var wat = 9;',
+	mode: 'ace/mode/javascript'
+});
+
+leftPane.setTheme('monokai');
+leftPane.setContent();

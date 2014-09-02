@@ -14,7 +14,6 @@ var mocha = require('gulp-mocha');
 // Tasks
 gulp.task('default', ['hint', 'scripts', 'styles', 'images', 'html']);
 
-// JS packaging
 gulp.task('scripts', function() {
 	return gulp.src(gulpConfig.scripts.paths.entry)
 		.pipe(webpack(gulpConfig.webpack))

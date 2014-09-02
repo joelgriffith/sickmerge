@@ -2,7 +2,7 @@ var spawn = require('child_process').spawn;
 var fs = require('fs');
 var concat = require('concat-stream');
 
-function _getConflicted(cb) {
+function getConflicted(cb) {
 	if (typeof cb !== 'function') throw new Error('#getConflicted expects a function callback');
 	var conflicted = spawn('git', ['diff', '--name-only', '--diff-filter=U']);
 	var result = concat(function(data) {
@@ -11,32 +11,32 @@ function _getConflicted(cb) {
 	conflicted.stdout.pipe(result);
 }
 
-function _getFile(fileLocation) {
+function getFile(fileLocation) {
 	return fs.readFileSync(fileLocation, 'utf8');
 }
 
-function _stripFile(file, reg) {
+function stripFile(file, reg) {
 	return file.replace(reg, '');
 }
 
-function _getMine(fileLocation) {
+function getMine(fileLocation) {
 	var stripTheirsReg = /(?:(?:<<<<<<<)|(?:=======[\S\s]*?>>>>>>>)).+\n/g;
-	return _stripFile(_getFile(fileLocation), stripTheirsReg);
+	return stripFile(getFile(fileLocation), stripTheirsReg);
 }
 
-function _getTheirs(fileLocation) {
+function getTheirs(fileLocation) {
 	var stripYoursReg = /(?:(?:>>>>>>>)|(?:<<<<<<<[\S\s]*?=======)).*\n/g;
-	return _stripFile(_getFile(fileLocation), stripYoursReg);
+	return stripFile(getFile(fileLocation), stripYoursReg);
 }
 
-function _getPlain(fileLocation) {
+function getPlain(fileLocation) {
 	var stripAllReg = /(?:(?:<<<<<<<)|(?:=======)|(?:>>>>>>>)).*\n/g;
-	return _stripFile(_getFile(fileLocation), stripAllReg);
+	return stripFile(getFile(fileLocation), stripAllReg);
 }
 
 module.exports = {
-	getConflicted: _getConflicted,
-	getMine: _getMine,
-	getTheirs: _getTheirs,
-	getPlain: _getPlain
+	getConflicted: getConflicted,
+	getMine: getMine,
+	getTheirs: getTheirs,
+	getPlain: getPlain
 };
