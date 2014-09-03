@@ -1,12 +1,48 @@
-/*
- *	Import all of your SCSS files here
- */
 @import '_reset';
+@import '_layout';
 
-#javascript-editor {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 66%;
+$header-height: 10px;
+$footer-height: 50px;
+$tabbar-height: 35px;
+$column-width-percent: 33.333333333333%;
+$column-gutter: 10px;
+$gutter-width: 20px;
+
+body {
+	@include page-container();
+}
+
+header {
+	background-color: orange;
+	@include header($header-height);
+}
+
+main {
+	@include editor(100%, $header-height + $tabbar-height, $footer-height);
+}
+
+.column {
+	@include column($column-width-percent, $column-gutter);
+
+	&:first-child {
+		background-color: blue;
+		left: 0;
+	}
+	&:nth-child(2) {
+		background-color: green;
+		left: calc(#{$column-width-percent} + 5px);
+	}
+	&:last-child {
+		background-color: red;
+		right: 0;
+	}
+}
+
+.tab-bar {
+	background-color: grey;
+	@include tab-bar($tabbar-height, $header-height);
+}
+
+footer {
+	@include footer($footer-height);
 }
