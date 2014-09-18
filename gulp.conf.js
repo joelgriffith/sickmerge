@@ -66,7 +66,8 @@ module.exports = {
 				test: /\.js$/,
 				loader: 'es6-loader'
 			}]
-		}
+		},
+		devtool: "#inline-source-map"
 	},
 	connect: {
 		port: 8080,

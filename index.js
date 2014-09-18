@@ -42,14 +42,13 @@ function setupServer(conflictedFiles) {
         });
     });
     server.setFiles(filesArray);
-    server.start();
+    server.start(program.port);
     console.log('Visit http://' + program.hostname + ':' + program.port + ' in your browser');
     console.log('You can resolve files by saving, and cancel by hitting "Cancel" or ctrl+c');
 }
 
 if (program.file) {
-    setupServer(program.file);
-}
-else {
+    setupServer(program.file, program.port);
+} else {
     git.getConflicted(setupServer);
 }

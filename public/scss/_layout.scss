@@ -3,9 +3,10 @@
 }
 
 @mixin column($width-percent, $gutter) {
-	position: absolute;
+	position: absolute !important;
 	top: 0;
 	bottom: 0;
+	height: 100%;
 	width: calc(#{$width-percent} - #{$gutter});
 }
 

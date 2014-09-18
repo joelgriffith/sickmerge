@@ -5,8 +5,7 @@ $header-height: 10px;
 $footer-height: 50px;
 $tabbar-height: 35px;
 $column-width-percent: 33.333333333333%;
-$column-gutter: 10px;
-$gutter-width: 20px;
+$column-gutter: 20px;
 
 body {
 	@include page-container();
@@ -25,15 +24,12 @@ main {
 	@include column($column-width-percent, $column-gutter);
 
 	&:first-child {
-		background-color: blue;
 		left: 0;
 	}
 	&:nth-child(2) {
-		background-color: green;
-		left: calc(#{$column-width-percent} + 5px);
+		left: calc(#{$column-width-percent} + #{$column-gutter} / 2);
 	}
 	&:last-child {
-		background-color: red;
 		right: 0;
 	}
 }
