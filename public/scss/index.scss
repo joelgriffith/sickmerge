@@ -24,12 +24,14 @@ main {
 	@include column($column-width-percent, $column-gutter);
 
 	&:first-child {
+		pointer-events: none;
 		left: 0;
 	}
 	&:nth-child(2) {
 		left: calc(#{$column-width-percent} + #{$column-gutter} / 2);
 	}
 	&:last-child {
+		pointer-events: none;
 		right: 0;
 	}
 }

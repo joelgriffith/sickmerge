@@ -23,7 +23,7 @@ function start() {
 
 	middlePane = new Editor({
 		id: 'both',
-		content: mockContent,
+		content: mockContent + '\n' + mockContent,
 		mode: 'ace/mode/javascript',
 		theme: 'tomorrow_night_eighties',
 		isEditable: true
@@ -33,17 +33,14 @@ function start() {
 }
 
 function setupEvents() {
-	leftPane.getSession().on('changeScrollTop', mirrorScrollTop);
-	leftPane.getSession().on('changeScrollLeft', mirrorScrollLeft);
-
-	middlePane.getSession().on('changeScrollTop', mirrorScrollTop);
-	middlePane.getSession().on('changeScrollLeft', mirrorScrollLeft);
 	middlePane.getSession().on('change', updateDiff);
-
-	rightPane.getSession().on('changeScrollTop', mirrorScrollTop);
-	rightPane.getSession().on('changeScrollLeft', mirrorScrollLeft);
+	setupScroll();
 }
-	console.log(diff);
+
+function setupScroll() {
+	middlePane.getSession().on('changeScrollTop', offset => mirrorScrollTop(offset, 'middle'));
+	middlePane.getSession().on('changeScrollLeft', offset => mirrorScrollLeft(offset, 'middle'));
+}
 
 function updateDiff() {
 	console.log(leftPane.getSession().getValue());
@@ -54,9 +51,17 @@ function updateDiff() {
 }
 
 function mirrorScrollTop(offset) {
-	middlePane.getSession().setScrollTop(offset);
-	leftPane.getSession().setScrollTop(offset);
-	rightPane.getSession().setScrollTop(offset);
+	let middlePaneLength = middlePane.getSession().getLength(),
+		rightPaneLength = rightPane.getSession().getLength(),
+		leftPaneLength = leftPane.getSession().getLength(),
+		leftOffset,
+		rightOffset;
+
+	leftOffset = offset * (leftPaneLength / middlePaneLength);
+	rightOffset = offset * (rightPaneLength / middlePaneLength);
+
+	leftPane.getSession().setScrollTop(leftOffset * 0.8);
+	rightPane.getSession().setScrollTop(rightOffset * 0.8);
 }
 
 function mirrorScrollLeft(offset) {
