@@ -1,20 +1,4 @@
 import sanitizer from 'sanitizer';
-import dom from 'dom';
-
-function mirrorScroll(master, slaves) {
-	let slavEls = [];
-	let masterEl = dom.getEl(master + ' .ace_content');
-
-	slaves.forEach(function(slave) {
-		slavEls.push(dom.getEl(slave + ' .ace_content'));
-	});
-
-	masterEl.addEventListener('mousewheel', function() {
-		slavEls.forEach(function(slaveEl) {
-			slaveEl.marginTop = masterEl.marginTop;
-		});
-	});
-}
 
 function Editor(params) {
 	var editor;
@@ -46,9 +30,18 @@ function Editor(params) {
 		editor.setReadOnly(true);
 	}
 
-	if (params.scrollMirrorEls && params.scrollMirrorEls.length) {
-		mirrorScroll('#' + params.id, params.scrollMirrorEls);
+	function getEditor() {
+		return getEditor();
 	}
+
+	function getSession() {
+		return editor.getSession();
+	}
+
+	return {
+		getEditor: getEditor,
+		getSession: getSession
+	};
 }
 
 export default Editor;

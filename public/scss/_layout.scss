@@ -6,7 +6,6 @@
 	position: absolute !important;
 	top: 0;
 	bottom: 0;
-	height: 100%;
 	width: calc(#{$width-percent} - #{$gutter});
 }
 
@@ -33,6 +32,13 @@
 	right: 0;
 	top: 0;
 	height: $height;
+}
+
+@mixin gutter($width) {
+	position: absolute;
+	width: $width;
+	top: 0;
+	bottom: 0;
 }
 
 @mixin footer($height) {

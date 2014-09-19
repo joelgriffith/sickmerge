@@ -2,7 +2,7 @@
 @import '_layout';
 
 $header-height: 10px;
-$footer-height: 50px;
+$footer-height: 20px;
 $tabbar-height: 35px;
 $column-width-percent: 33.333333333333%;
 $column-gutter: 20px;
@@ -32,6 +32,10 @@ main {
 	&:last-child {
 		right: 0;
 	}
+}
+
+.gutter {
+	@include gutter($column-gutter);
 }
 
 .tab-bar {
