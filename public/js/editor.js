@@ -23,7 +23,7 @@ function Editor(params) {
 	}
 
 	if (params.content) {
-		editor.setValue(params.content);
+		editor.setValue(params.content, 1);
 	}
 
 	if (!params.isEditable) {

@@ -5,7 +5,7 @@ $header-height: 10px;
 $footer-height: 20px;
 $tabbar-height: 35px;
 $column-width-percent: 33.333333333333%;
-$column-gutter: 20px;
+$column-gutter: 15px;
 
 body {
 	@include page-container();
@@ -43,6 +43,15 @@ main {
 .tab-bar {
 	background-color: grey;
 	@include tab-bar($tabbar-height, $header-height);
+}
+
+.highlight {
+	.yours {
+		background-color: green;
+	}
+	.theirs {
+		background-color: blue;
+	}
 }
 
 footer {

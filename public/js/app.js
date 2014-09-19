@@ -23,7 +23,7 @@ function start() {
 
 	middlePane = new Editor({
 		id: 'both',
-		content: mockContent + '\n' + mockContent,
+		content: mockContent,
 		mode: 'ace/mode/javascript',
 		theme: 'tomorrow_night_eighties',
 		isEditable: true
@@ -34,40 +34,43 @@ function start() {
 
 function setupEvents() {
 	middlePane.getSession().on('change', updateDiff);
-	setupScroll();
-}
-
-function setupScroll() {
-	middlePane.getSession().on('changeScrollTop', offset => mirrorScrollTop(offset, 'middle'));
-	middlePane.getSession().on('changeScrollLeft', offset => mirrorScrollLeft(offset, 'middle'));
+	middlePane.getSession().on('changeScrollTop', mirrorScrollTop);
+	middlePane.getSession().on('changeScrollLeft', mirrorScrollLeft);
 }
 
 function updateDiff() {
-	console.log(leftPane.getSession().getValue());
 	let yoursDelta = diff.diffLines(leftPane.getSession().getValue(), middlePane.getSession().getValue()),
 		theirsDelta = diff.diffLines();
-
-	console.log(yoursDelta);
 }
 
 function mirrorScrollTop(offset) {
-	let middlePaneLength = middlePane.getSession().getLength(),
-		rightPaneLength = rightPane.getSession().getLength(),
-		leftPaneLength = leftPane.getSession().getLength(),
+	let editorHeight = document.getElementById('both').offsetHeight,
+		middlePaneHeight = middlePane.getSession().getLength() * 16,
+		rightPaneHeight = rightPane.getSession().getLength() * 16,
+		leftPaneHeight = leftPane.getSession().getLength() * 16,
 		leftOffset,
 		rightOffset;
 
-	leftOffset = offset * (leftPaneLength / middlePaneLength);
-	rightOffset = offset * (rightPaneLength / middlePaneLength);
+	leftOffset = (leftPaneHeight - editorHeight) * (offset / (middlePaneHeight - editorHeight));
+	rightOffset = (rightPaneHeight - editorHeight) * (offset / (middlePaneHeight - editorHeight));
 
-	leftPane.getSession().setScrollTop(leftOffset * 0.8);
-	rightPane.getSession().setScrollTop(rightOffset * 0.8);
+	leftPane.getSession().setScrollTop(leftOffset);
+	rightPane.getSession().setScrollTop(rightOffset);
 }
 
 function mirrorScrollLeft(offset) {
-	middlePane.getSession().setScrollLeft(offset);
-	leftPane.getSession().setScrollLeft(offset);
-	rightPane.getSession().setScrollLeft(offset);
+	let editorWidth = document.getElementById('both').offsetWidth - document.querySelectorAll('.ace_gutter')[0].offsetWidth,
+		middlePaneWidth = document.querySelectorAll('#both .ace_content')[0].offsetWidth,
+		rightPaneWidth = document.querySelectorAll('#theirs .ace_content')[0].offsetWidth,
+		leftPaneWidth = document.querySelectorAll('#yours .ace_content')[0].offsetWidth,
+		leftOffset,
+		rightOffset;
+
+	leftOffset = (leftPaneWidth - editorWidth) * (offset / (middlePaneWidth - editorWidth));
+	rightOffset = (rightPaneWidth - editorWidth) * (offset / (middlePaneWidth - editorWidth));
+
+	leftPane.getSession().setScrollLeft(leftOffset);
+	rightPane.getSession().setScrollLeft(rightOffset);
 }
 
 export default { start: start };
