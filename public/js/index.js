@@ -1,7 +1,7 @@
-/*
- *	Index JS
- *	Require all your scripts here and init them!
- *	You should be using the ES6 Import/Export syntax!
- */
+// App Entry
 import app from 'app';
 app.start();
+
+$(window).click(function() {
+	$('.side-bar').toggleClass('active');
+});

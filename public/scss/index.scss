@@ -1,23 +1,18 @@
 @import '_reset';
 @import '_layout';
 
-$header-height: 10px;
-$footer-height: 20px;
-$tabbar-height: 35px;
+$editor-padding: 20px;
 $column-width-percent: 33.333333333333%;
 $column-gutter: 15px;
+$slide-animation: all 0.5s;
 
 body {
 	@include page-container();
 }
 
-header {
-	background-color: orange;
-	@include header($header-height);
-}
-
 main {
-	@include editor(100%, $header-height + $tabbar-height, $footer-height);
+	@include editor(100%, $editor-padding, $editor-padding);
+
 }
 
 .column {
@@ -36,13 +31,17 @@ main {
 	}
 }
 
-.gutter {
-	@include gutter($column-gutter);
+.side-bar {
+	@include side-bar();
+	transition: $slide-animation;
+
+	&.active {
+		left: 0px;
+	}
 }
 
-.tab-bar {
-	background-color: grey;
-	@include tab-bar($tabbar-height, $header-height);
+.gutter {
+	@include gutter($column-gutter);
 }
 
 .highlight {
@@ -52,8 +51,4 @@ main {
 	.theirs {
 		background-color: blue;
 	}
-}
-
-footer {
-	@include footer($footer-height);
 }

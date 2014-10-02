@@ -17,23 +17,6 @@
 	width: $width;
 }
 
-@mixin tab-bar($height, $top) {
-	position: absolute;
-	height: $height;
-	left: 0;
-	right: 0;
-	top: $top;
-}
-
-@mixin header($height) {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	top: 0;
-	height: $height;
-}
-
 @mixin gutter($width) {
 	position: absolute;
 	width: $width;
@@ -41,19 +24,22 @@
 	bottom: 0;
 }
 
-@mixin footer($height) {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	height: $height;
-}
-
 @mixin page-container() {
+	background: #191919;
 	overflow: hidden;
 	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
+}
+
+@mixin side-bar() {
+	z-index: 20;
+	background: green;
+	width: 25%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -100%;
 }
