@@ -1,6 +1,6 @@
 import sanitizer from 'sanitizer';
 
-function Editor(params) {
+export default function Editor(params) {
 	var editor;
 
 	sanitizer.parseParams(params, {
@@ -43,5 +43,3 @@ function Editor(params) {
 		getSession: getSession
 	};
 }
-
-export default Editor;

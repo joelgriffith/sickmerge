@@ -1,10 +1,6 @@
 @import '_reset';
 @import '_layout';
-
-$editor-padding: 20px;
-$column-width-percent: 33.333333333333%;
-$column-gutter: 15px;
-$slide-animation: all 0.5s;
+@import '_variables';
 
 body {
 	@include page-container();
@@ -13,6 +9,10 @@ body {
 main {
 	@include editor(100%, $editor-padding, $editor-padding);
 
+}
+
+header {
+	@include header($header-height);
 }
 
 .column {
@@ -32,11 +32,25 @@ main {
 }
 
 .side-bar {
-	@include side-bar();
+	@include side-bar($side-bar-width);
 	transition: $slide-animation;
+	background: $secondary-color;
 
 	&.active {
 		left: 0px;
+	}
+
+	.expander {
+		@include button($secondary-color);
+		width: $expander-button-width;
+		right: -$expander-button-width;
+		position: absolute;
+		top: 50%;
+		height: 20px;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }
 

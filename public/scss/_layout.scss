@@ -1,5 +1,19 @@
+@import '_variables';
+
 * {
 	box-sizing: border-box;
+}
+
+@mixin header($height) {
+	font-family: $logo-font;
+	font-size: 24px;
+	color: white;
+	background-color: $primary-color;
+	float: right;
+	height: $height;
+	line-height: $height;
+	padding: 0 10px;
+	text-transform: uppercase;
 }
 
 @mixin column($width-percent, $gutter) {
@@ -24,6 +38,15 @@
 	bottom: 0;
 }
 
+@mixin button($color) {
+	padding: 0;
+	margin: 0;
+	border: none;
+	outline: none;
+	border-radius: 0;
+	background: $color;
+}
+
 @mixin page-container() {
 	background: #191919;
 	overflow: hidden;
@@ -34,12 +57,11 @@
 	right: 0;
 }
 
-@mixin side-bar() {
+@mixin side-bar($side-bar-width) {
 	z-index: 20;
-	background: green;
-	width: 25%;
+	width: $side-bar-width;
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: -100%;
+	left: -$side-bar-width;
 }

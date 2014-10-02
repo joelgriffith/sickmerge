@@ -1,4 +1,5 @@
 import Editor from 'editor';
+import EventManager from 'event-manager';
 
 let diff = require('diff'),
 	mockContent = require('raw-loader!../../test/mocks/javascript-content.js'),
@@ -33,14 +34,15 @@ function start() {
 }
 
 function setupEvents() {
+	let eventManager = new EventManager();
+	eventManager.listen();
 	middlePane.getSession().on('change', updateDiff);
 	middlePane.getSession().on('changeScrollTop', mirrorScrollTop);
 	middlePane.getSession().on('changeScrollLeft', mirrorScrollLeft);
 }
 
 function updateDiff() {
-	let yoursDelta = diff.diffLines(leftPane.getSession().getValue(), middlePane.getSession().getValue()),
-		theirsDelta = diff.diffLines();
+
 }
 
 function mirrorScrollTop(offset) {
